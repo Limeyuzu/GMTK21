@@ -8,6 +8,7 @@ public class PlayerJumpController : MonoBehaviour
     private int AvailableJumps = 0;
     public int LandingRechargeAmount = 1;
     public int JumpSpeed;
+    public AudioSource JumpSoundSource;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AvailableJumps += LandingRechargeAmount;   
@@ -21,6 +22,7 @@ public class PlayerJumpController : MonoBehaviour
         Vector2 VelocityDirection = new Vector2(PlayerRigidbody.velocity.x, JumpSpeed);
         PlayerRigidbody.velocity = VelocityDirection;
         AvailableJumps -= 1;
+        JumpSoundSource.Play();
     }
     // Start is called before the first frame update
     void Start()
