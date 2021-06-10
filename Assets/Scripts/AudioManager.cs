@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Generic.Event;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public List<AudioObject> AudioObjects = new List<AudioObject>();
-    public GameEventBlackboard GameEventBlackboard;
+
     private void Awake()
     {
         PopulateSources();
     }
+
     public void PopulateSources()
     {
         foreach (AudioObject Audio in AudioObjects)
@@ -17,9 +18,9 @@ public class AudioManager : MonoBehaviour
             CreateSource(Audio);
         }
     }
+
     public void CreateSource(AudioObject audioObject)
     {
-        SourceObject Object = new SourceObject();
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.clip = audioObject.Clip;
         source.priority = audioObject.Priority;
@@ -28,11 +29,7 @@ public class AudioManager : MonoBehaviour
         source.panStereo = audioObject.StereoPan;
         source.spatialBlend = audioObject.SpatialBlend;
         source.reverbZoneMix = audioObject.ReverbZoneMix;
-        Object.Source = source;
-        EventListener.ListenerDelegate Delegate;
-        Delegate = Object.PlaySource;
-        GameEvent TriggerEvent = GameEventBlackboard.GetGameEvent(audioObject.TriggerEventKey);
-        TriggerEvent.Subscribe(Delegate);
-    }
 
+        EventManager.Subscribe(audioObject.TriggerEventKey, _ => source.Play());
+    }
 }

@@ -7,7 +7,6 @@ public class AudioObjectCreationWindow : EditorWindow
     GameEvent2 selected;
     string ObjectName = string.Empty;
     AudioClip Clip;
-    string TriggerEventKey = "";
     int Priority = 128;
     float Volume = 1;
     float Pitch = 1;
@@ -46,7 +45,6 @@ public class AudioObjectCreationWindow : EditorWindow
         ReverbZoneMix = EditorGUILayout.Slider(ReverbZoneMix, 0f, 1.1f);
         if(GUILayout.Button("Create Audio Object"))
         {
-            TriggerEventKey = selected.ToString();
             CreateAudioObject();
         }
         GUILayout.EndVertical();
@@ -57,7 +55,7 @@ public class AudioObjectCreationWindow : EditorWindow
         AudioObject NewObject = ScriptableObject.CreateInstance<AudioObject>();
         NewObject.name = ObjectName;
         var path = string.Format(_outputFilePathFormat, NewObject);
-        NewObject.FillAudioObject(Clip, TriggerEventKey, Priority, Volume, Pitch, StereoPan, SpatialBlend, ReverbZoneMix);
+        NewObject.FillAudioObject(Clip, selected, Priority, Volume, Pitch, StereoPan, SpatialBlend, ReverbZoneMix);
         AssetDatabase.CreateAsset(NewObject, path);
         EditorUtility.SetDirty(NewObject);
         AssetDatabase.SaveAssets();

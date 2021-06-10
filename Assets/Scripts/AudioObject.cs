@@ -1,18 +1,19 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
 public class AudioObject : ScriptableObject
 {
     public AudioClip Clip;
-    public string TriggerEventKey = "";
+    public GameEvent2 TriggerEventKey;
     public int Priority = 128;
     public float Volume = 1;
     public float Pitch = 1;
     public float StereoPan = 0;
     public float SpatialBlend = 0;
     public float ReverbZoneMix = 1;
-    public void FillAudioObject(AudioClip _Clip, string _TriggerEventKey, int _Priority, float _Volume, float _Pitch, float _StereoPan, float _SpatialBlend, float _ReverbZoneMix)
+    public void FillAudioObject(AudioClip _Clip, GameEvent2 _TriggerEventKey, int _Priority, float _Volume, float _Pitch, float _StereoPan, float _SpatialBlend, float _ReverbZoneMix)
     {
         Clip = _Clip;
         TriggerEventKey = _TriggerEventKey;

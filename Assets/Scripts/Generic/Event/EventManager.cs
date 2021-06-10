@@ -11,7 +11,7 @@ namespace Assets.Scripts.Generic.Event
     /// </summary>
     public class EventManager : MonoBehaviour
     {
-        private Dictionary<GameEvent, UnityEvent<object>> eventDictionary;
+        private Dictionary<GameEvent2, UnityEvent<object>> eventDictionary;
 
         private static EventManager eventManager;
 
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Generic.Event
         /// </summary>
         /// <param name="eventName">The event name</param>
         /// <param name="listener">The delegate, which may pass one object parameter</param>
-        public static void Subscribe(GameEvent eventName, UnityAction<object> listener)
+        public static void Subscribe(GameEvent2 eventName, UnityAction<object> listener)
         {
             if (Instance.eventDictionary.TryGetValue(eventName, out UnityEvent<object> thisEvent))
             {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Generic.Event
         /// </summary>
         /// <param name="eventName">The event name</param>
         /// <param name="param">The parameter for this event</param>
-        public static void Emit(GameEvent eventName, object param = null)
+        public static void Emit(GameEvent2 eventName, object param = null)
         {
             if (Instance.eventDictionary.TryGetValue(eventName, out UnityEvent<object> thisEvent))
             {
@@ -83,7 +83,7 @@ namespace Assets.Scripts.Generic.Event
         {
             if (eventDictionary == null)
             {
-                eventDictionary = new Dictionary<GameEvent, UnityEvent<object>>();
+                eventDictionary = new Dictionary<GameEvent2, UnityEvent<object>>();
             }
         }
     }
