@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
+    [SerializeField] GameEvent2 EventToFire;
+
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.Emit(GameEvent2.EnumEventOne);
+        EventManager.Emit(EventToFire);
     }
 
     // Update is called once per frame
