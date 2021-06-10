@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 [System.Serializable]
 public class AudioObject : ScriptableObject
 {
@@ -13,6 +12,7 @@ public class AudioObject : ScriptableObject
     public float StereoPan = 0;
     public float SpatialBlend = 0;
     public float ReverbZoneMix = 1;
+
     public void FillAudioObject(AudioClip _Clip, GameEvent2 _TriggerEventKey, int _Priority, float _Volume, float _Pitch, float _StereoPan, float _SpatialBlend, float _ReverbZoneMix)
     {
         Clip = _Clip;

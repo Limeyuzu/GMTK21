@@ -14,7 +14,7 @@ public class AudioObjectCreationWindow : EditorWindow
     float SpatialBlend = 0;
     float ReverbZoneMix = 1;
 
-    private readonly string _outputFilePathFormat = "Assets/Scripts/{0}.asset";
+    private readonly string _outputFilePathFormat = "Assets/EventSFX/{0}.asset";
 
     [MenuItem("Tools/AudioObject Creation Window")]
 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 023418172606f05498504553f185f7f1, type: 3}
-  m_Name: testEnumAudioObject (AudioObject)
+  m_Name: eventAudio1 (AudioObject)
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 0dc3855f926aff2499da466ba2832896, type: 3}
-  TriggerEventKey: EnumEventOne
+  Clip: {fileID: 8300000, guid: efb1c5cda28bffa4ea21c597ef7006f1, type: 3}
+  TriggerEventKey: 0
   Priority: 128
   Volume: 1
   Pitch: 1
