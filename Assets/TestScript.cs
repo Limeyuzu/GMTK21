@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    [SerializeField] GameEvent2 EventToFire;
+    [SerializeField] GameEvent EventToFire;
 
     // Start is called before the first frame update
     void Start()

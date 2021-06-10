@@ -4,7 +4,7 @@ using Assets.Scripts;
 
 public class AudioObjectCreationWindow : EditorWindow
 {
-    GameEvent2 selected;
+    GameEvent selected;
     string ObjectName = string.Empty;
     AudioClip Clip;
     int Priority = 128;
@@ -30,7 +30,7 @@ public class AudioObjectCreationWindow : EditorWindow
         ObjectName = GUILayout.TextField(ObjectName, 20);
         GUILayout.Label("Audio Clip");
         Clip = (AudioClip)EditorGUILayout.ObjectField(Clip,typeof(AudioClip),true);
-        selected = (GameEvent2)EditorGUILayout.EnumPopup("Event Trigger Options",selected);
+        selected = (GameEvent)EditorGUILayout.EnumPopup("Event Trigger Options",selected);
         GUILayout.Label("Audio Priorty:");
         Priority = EditorGUILayout.IntSlider(Priority, 0, 256);
         GUILayout.Label("Audio Volume:");
