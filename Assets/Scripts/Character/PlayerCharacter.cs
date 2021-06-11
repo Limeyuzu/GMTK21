@@ -5,7 +5,6 @@ public class PlayerCharacter : StrongCharacter
 {
     //Abilities of all characters
     //Move
-
     public bool Controlling = false;
     public void CheckInputs()
     {
@@ -24,6 +23,7 @@ public class PlayerCharacter : StrongCharacter
         }
         Move(Dir);
     }
+
     private void Update()
     {
         if(Controlling == true)

@@ -6,6 +6,8 @@
     public enum GameEvent
     {
         EnumEventOne,
-        EnumEventTwo
+        EnumEventTwo,
+        ButtonEPressed,
+        ButtonSpacePressed,
     }
 }

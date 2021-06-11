@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
         Move(Vector2.zero);
     }
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
     }
