@@ -4,6 +4,8 @@ namespace Assets.Scripts
 {
     public class Rope : MonoBehaviour
     {
+        [Tooltip("When false, ConnectedTo will be pulled. When true, this will be pulled.")]
+        [SerializeField] bool FlipRopeTarget;
         [SerializeField] GameObject ConnectedTo;
         [SerializeField] float MaxLength = 5;
         [SerializeField] float PullStrength = 3;
@@ -46,9 +48,18 @@ namespace Assets.Scripts
         {
             if (!_maxLengthReached) return;
 
-            // apply forces - only on the connected object
-            var direction = this.transform.position - ConnectedTo.transform.position;
-            _otherRigidBody2D.AddForce(direction * PullStrength);
+            if (FlipRopeTarget)
+            {
+                // apply forces - only on this object
+                var direction = ConnectedTo.transform.position - this.transform.position;
+                _thisRigidbody2D.AddForce(direction * PullStrength);
+            } 
+            else
+            {
+                // apply forces - only on the connected object
+                var direction = this.transform.position - ConnectedTo.transform.position;
+                _otherRigidBody2D.AddForce(direction * PullStrength);
+            }
         }
 
         private void DrawRope()
