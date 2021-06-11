@@ -161,7 +161,6 @@ MonoBehaviour:
   ThrowSpeed: 5
   LiftedObject: {fileID: 0}
   ThrowDirection: {x: 0, y: 0}
-  Controlling: 0
 --- !u!50 &2337066
 Rigidbody2D:
   serializedVersion: 4
@@ -380,7 +379,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544245310}
-  - component: {fileID: 544245311}
   m_Layer: 0
   m_Name: EventTriggerer
   m_TagString: Untagged
@@ -402,18 +400,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &544245311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544245309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57f390c65752bf4fa34d6fcceb20139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &844568432
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +716,6 @@ MonoBehaviour:
   ThrowSpeed: 10
   LiftedObject: {fileID: 0}
   ThrowDirection: {x: 0.5, y: 1}
-  Controlling: 1
 --- !u!50 &1588848861
 Rigidbody2D:
   serializedVersion: 4

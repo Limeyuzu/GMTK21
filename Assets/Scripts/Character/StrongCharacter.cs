@@ -16,17 +16,17 @@ public class StrongCharacter : Character
         {
             return;
         }
-        if(CollisionObject.GetComponent<PlayerCharacter>() == true)
-        {
-            if (CollisionObject.GetComponent<PlayerCharacter>().Controlling == true)
-            {
-                return;
-            }
-        }
-        if(gameObject.GetComponent<PlayerCharacter>().Controlling == false)
-        {
-            return;
-        }
+        //if(CollisionObject.GetComponent<PlayerCharacter>() == true)
+        //{
+        //    if (CollisionObject.GetComponent<PlayerCharacter>()._controlling == true)
+        //    {
+        //        return;
+        //    }
+        //}
+        //if(gameObject.GetComponent<PlayerCharacter>()._controlling == false)
+        //{
+        //    return;
+        //}
         AssignLiftableObject(CollisionObject);
     }
     public void AssignLiftableObject(GameObject Object)
