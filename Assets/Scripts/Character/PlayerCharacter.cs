@@ -1,11 +1,15 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PlayerCharacter : StrongCharacter
+
+public class PlayerCharacter : StrongCharacter, IControlSwitchable
 {
     //Abilities of all characters
     //Move
-    public bool Controlling = false;
+
+    private bool _controlling = false;
+    private Rope _rope;
     public void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
@@ -24,9 +28,36 @@ public class PlayerCharacter : StrongCharacter
         Move(Dir);
     }
 
+    public void GiveControl()
+    {
+        _controlling = true;
+        if (_rope)
+        {
+            _rope.FlipRopeTarget();
+        }
+    }
+
+    public void RemoveControl()
+    {
+        _controlling = false;
+        if (_rope)
+        {
+            _rope.FlipRopeTarget();
+        }
+        Stop();
+    }
+
+    public bool HasControl() => _controlling;
+
+    protected override void Start()
+    {
+        _rope = GetComponent<Rope>();
+        base.Start();
+    }
+
     private void Update()
     {
-        if(Controlling == true)
+        if(_controlling == true)
         {
             CheckInputs();
         }
