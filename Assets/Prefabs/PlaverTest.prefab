@@ -162,7 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LandingRechargeAmount: 1
   JumpSpeed: 7
-  JumpSoundSource: {fileID: 0}
 --- !u!120 &2111028847
 LineRenderer:
   m_ObjectHideFlags: 0
