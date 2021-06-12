@@ -8,6 +8,8 @@ public class Liftable : MonoBehaviour
     public Rigidbody2D ObjectRigidBody;
     public bool OpenToLift = true;
 
+    public bool IsBeingLifted { get; private set; }
+
     private TrailRenderer _trailRenderer;
 
     private void Start()
@@ -27,10 +29,12 @@ public class Liftable : MonoBehaviour
     {
         ObjectRigidBody.isKinematic = true;
         ObjectRigidBody.velocity = Vector2.zero;
+        IsBeingLifted = true;
     }
     public void Unlock()
     {
         ObjectRigidBody.isKinematic = false;
+        IsBeingLifted = false;
     }
     public void RenderTrail()
     {
