@@ -17,9 +17,11 @@ GameObject:
   - component: {fileID: 292298454226335352}
   - component: {fileID: 292298454226335335}
   - component: {fileID: 2806676099623499267}
+  - component: {fileID: 2337066}
+  - component: {fileID: 2337075}
   m_Layer: 0
   m_Name: Character2
-  m_TagString: Untagged
+  m_TagString: Character2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750596bd760e9dc4c9ded1b06c422c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowDirection: {x: 0.5, y: 1}
+  ThrowDirection: {x: 0.75, y: 1}
   ThrowSpeed: 10
 --- !u!96 &2806676099623499267
 TrailRenderer:
@@ -308,6 +310,41 @@ TrailRenderer:
   m_MinVertexDistance: 0.5
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &2337066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292298454226335328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec963f8a7319ea4fb3d526803e50947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCharacter: {fileID: 292298454226335329}
+  Rope: {fileID: 0}
+  Rigidbody2D: {fileID: 292298454226335330}
+  UpForce: 15
+--- !u!95 &2337075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292298454226335328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3abf9d1a8fc942446bd5408ad738440b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &292298455220396524
 GameObject:
   m_ObjectHideFlags: 0

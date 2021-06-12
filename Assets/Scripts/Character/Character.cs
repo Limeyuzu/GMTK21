@@ -4,8 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
-    Rigidbody2D Rigidbody;
     public int MoveSpeed;
+
+    protected Rigidbody2D Rigidbody;
+    protected Animator Animator;
+
     public void Move(Vector2 Direction)
     {
         Vector2 NewDir = new Vector2(Direction.x * MoveSpeed, Rigidbody.velocity.y);
@@ -18,14 +21,20 @@ public class Character : MonoBehaviour
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
+
+        if (Animator)
+        {
+            Animator.SetBool("IsMoving", Mathf.Abs(Direction.x) > 0);
+        }
     }
     public void Stop()
     {
         Move(Vector2.zero);
     }
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
     }
 }

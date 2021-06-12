@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Generic.Event;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Generic.Audio
 {
     [System.Serializable]
     public class AudioObject : ScriptableObject
     {
-        public AudioClip Clip;
+        public List<AudioClip> Clips;
         public GameEvent TriggerEventKey;
         public int Priority = 128;
         public float Volume = 1;
@@ -14,9 +16,9 @@ namespace Assets.Scripts.Generic.Audio
         public float SpatialBlend = 0;
         public float ReverbZoneMix = 1;
 
-        public void FillAudioObject(AudioClip _Clip, GameEvent _TriggerEventKey, int _Priority, float _Volume, float _Pitch, float _StereoPan, float _SpatialBlend, float _ReverbZoneMix)
+        public void FillAudioObject(List<AudioClip> _Clips, GameEvent _TriggerEventKey, int _Priority, float _Volume, float _Pitch, float _StereoPan, float _SpatialBlend, float _ReverbZoneMix)
         {
-            Clip = _Clip;
+            Clips = _Clips;
             TriggerEventKey = _TriggerEventKey;
             Priority = _Priority;
             Volume = _Volume;

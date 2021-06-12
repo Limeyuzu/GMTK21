@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Generic.Event;
 [RequireComponent(typeof(Collider2D))]
 public class LiftAbility : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class LiftAbility : MonoBehaviour
         Transform CollisionTransform = Object.transform;
         CollisionTransform.position = LiftPosition.position;
         CollisionTransform.parent = transform;
+        EventManager.Emit(GameEvent.PickUpObject, gameObject);
     }
     bool AssessLiftObject(GameObject Object)
     {

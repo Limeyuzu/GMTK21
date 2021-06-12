@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Generic.Event;
 [RequireComponent(typeof(LiftAbility))]
 public class ThrowAbility : MonoBehaviour
 {
@@ -23,11 +24,12 @@ public class ThrowAbility : MonoBehaviour
         ThrowObject.Unlock();
 
         // Chaces Trail Render addition
-        ThrowObject.GetComponent<TrailRenderer>().enabled = true;
+        ThrowObject.RenderTrail();
 
         Rigidbody2D RB = ThrowObject.ObjectRigidBody;
         Vector2 NewDir = new Vector2((ThrowDirection.x * transform.localScale.x), ThrowDirection.y);
         RB.velocity = NewDir * ThrowSpeed;
         LiftAbility.ClearLiftableObject();
+        EventManager.Emit(GameEvent.ThrowCharacter, gameObject);
     }
 }

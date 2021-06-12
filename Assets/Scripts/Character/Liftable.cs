@@ -7,10 +7,11 @@ public class Liftable : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D ObjectRigidBody;
     public bool OpenToLift = true;
-    private void Start()
-    {
-        ObjectRigidBody = GetComponent<Rigidbody2D>();
-    }
+
+    public bool IsBeingLifted { get; private set; }
+
+    private TrailRenderer _trailRenderer;
+    
     public void ToggleLiftable(bool On)
     {
         OpenToLift = On;
@@ -23,9 +24,23 @@ public class Liftable : MonoBehaviour
     {
         ObjectRigidBody.isKinematic = true;
         ObjectRigidBody.velocity = Vector2.zero;
+        IsBeingLifted = true;
     }
     public void Unlock()
     {
         ObjectRigidBody.isKinematic = false;
+        IsBeingLifted = false;
+    }
+    public void RenderTrail()
+    {
+        if (_trailRenderer)
+        {
+            _trailRenderer.enabled = true;
+        }
+    }
+    private void Start()
+    {
+        ObjectRigidBody = GetComponent<Rigidbody2D>();
+        _trailRenderer = GetComponent<TrailRenderer>();
     }
 }
