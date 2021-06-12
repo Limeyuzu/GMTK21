@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750596bd760e9dc4c9ded1b06c422c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowDirection: {x: 0.5, y: 1}
+  ThrowDirection: {x: 0.75, y: 1}
   ThrowSpeed: 10
 --- !u!96 &1620599909476315305
 TrailRenderer:
