@@ -19,7 +19,15 @@ namespace Assets.Scripts
         private LineRenderer _lineRenderer;
 
         Color _ropeOriginalColor;
-
+        //Z: Added so that the CharacterWallCollision can check if it is at max.
+        public bool CheckForMaxLength()
+        {
+            if(_lineRenderer.startColor == Color.red)
+            {
+                return true;
+            }
+            return false;
+        }
         public void FlipRopeTarget()
         {
             _ropeFlipped = !_ropeFlipped;
@@ -60,13 +68,13 @@ namespace Assets.Scripts
             {
                 // apply forces - only on this object
                 var direction = ConnectedTo.transform.position - this.transform.position;
-                _thisRigidbody2D.AddForce(direction * PullStrength);
+                _thisRigidbody2D.AddForce(direction.normalized * PullStrength);
             } 
             else
             {
                 // apply forces - only on the connected object
                 var direction = this.transform.position - ConnectedTo.transform.position;
-                _otherRigidBody2D.AddForce(direction * PullStrength);
+                _otherRigidBody2D.AddForce(direction.normalized * PullStrength);
             }
         }
 

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using Assets.Scripts.Generic.Audio;
-using Assets.Scripts;
-
+using Assets.Scripts.Generic.Event;
 public class AudioObjectCreationWindow : EditorWindow
 {
     GameEvent selected;
@@ -15,7 +14,7 @@ public class AudioObjectCreationWindow : EditorWindow
     float SpatialBlend = 0;
     float ReverbZoneMix = 1;
 
-    private readonly string _outputFilePathFormat = "Assets/Event/Audio/{0}.asset";
+    private readonly string _outputFilePathFormat = "Assets/SFX/AudioObjects/{0}.asset";
 
     [MenuItem("Tools/AudioObject Creation Window")]
 
