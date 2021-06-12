@@ -24,7 +24,11 @@ public class PlayerCharacter : Character, IControlSwitchable
         if (Input.GetKeyDown(KeyCode.E))
         {
             ThrowAbility.ThrowObject();
-        }        
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameObjectInstanceManager.GetPlayerRope().Detach(Rigidbody);
+        }
         Move(Dir);
     }
 

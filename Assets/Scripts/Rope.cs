@@ -102,6 +102,10 @@ namespace Assets.Scripts
 
         private void ExecuteRopeForces()
         {
+            if (_ropeConnections.Count <= 1)
+            {
+                return;
+            }
             if (!_maxLengthReached) return;
 
             for (int i = 0; i < _ropeConnections.Count; i++)
@@ -133,6 +137,12 @@ namespace Assets.Scripts
 
         private void DrawRope()
         {
+            if(_ropeConnections.Count <= 1)
+            {
+                _lineRenderer.enabled = false;
+                return;
+            }
+            _lineRenderer.enabled = true;
             var color = _maxLengthReached ? Color.red : _ropeOriginalColor;
             _lineRenderer.startColor = color;
             _lineRenderer.endColor = color;
