@@ -20,8 +20,8 @@ public class ThrowAbility : MonoBehaviour
         Liftable ThrowObject = LiftAbility.GetLiftedObject();
         ThrowObject.Unlock();
         Rigidbody2D RB = ThrowObject.ObjectRigidBody;
-        Vector2 NewDir = new Vector2((ThrowDirection.x * -1), ThrowDirection.y);
-        RB.velocity = ThrowDirection * ThrowSpeed;
+        Vector2 NewDir = new Vector2((ThrowDirection.x * transform.localScale.x), ThrowDirection.y);
+        RB.velocity = NewDir * ThrowSpeed;
         LiftAbility.ClearLiftableObject();
     }
 }

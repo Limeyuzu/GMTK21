@@ -10,6 +10,14 @@ public class Character : MonoBehaviour
     {
         Vector2 NewDir = new Vector2(Direction.x * MoveSpeed, Rigidbody.velocity.y);
         Rigidbody.velocity = NewDir;
+        if(Direction == Vector2.left)
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
+        if (Direction == Vector2.right)
+        {
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        }
     }
     public void Stop()
     {
