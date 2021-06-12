@@ -68,13 +68,13 @@ namespace Assets.Scripts
             {
                 // apply forces - only on this object
                 var direction = ConnectedTo.transform.position - this.transform.position;
-                _thisRigidbody2D.AddForce(direction * PullStrength);
+                _thisRigidbody2D.AddForce(direction.normalized * PullStrength);
             } 
             else
             {
                 // apply forces - only on the connected object
                 var direction = this.transform.position - ConnectedTo.transform.position;
-                _otherRigidBody2D.AddForce(direction * PullStrength);
+                _otherRigidBody2D.AddForce(direction.normalized * PullStrength);
             }
         }
 
