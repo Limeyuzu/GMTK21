@@ -19,7 +19,15 @@ namespace Assets.Scripts
         private LineRenderer _lineRenderer;
 
         Color _ropeOriginalColor;
-
+        //Z: Added so that the CharacterWallCollision can check if it is at max.
+        public bool CheckForMaxLength()
+        {
+            if(_lineRenderer.startColor == Color.red)
+            {
+                return true;
+            }
+            return false;
+        }
         public void FlipRopeTarget()
         {
             _ropeFlipped = !_ropeFlipped;
