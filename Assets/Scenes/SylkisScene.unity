@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character1Prefab: {fileID: 5900101799683361908, guid: aa677dcc4c550a343886489fc14c451c, type: 3}
-  Character2Prefab: {fileID: 292298454226335329, guid: 61d8a1e2295f6d14bb617519b537a376, type: 3}
+  Character2Prefab: {fileID: -727135777919091973, guid: 61d8a1e2295f6d14bb617519b537a376, type: 3}
   RopePrefab: {fileID: 7587410939758192736, guid: cc5fd224634da3044b6157518c0aad0a, type: 3}
 --- !u!1 &844568432
 GameObject:
