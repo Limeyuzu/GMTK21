@@ -10,16 +10,10 @@ public class CharacterWallCollision : MonoBehaviour
     public int UpForce;
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Vector2 Dir = transform.position - collision.transform.position;
-        if (Dir.x > 0 || Dir.x < 0)
+        var distance = Vector3.Distance(transform.position, collision.transform.position);
+        if (distance > 0 && !PlayerCharacter.HasControl() && Rope.MaxLengthReached())
         {
-            if (PlayerCharacter.HasControl() == false)
-            {
-                if (Rope.CheckForMaxLength() == true)
-                {
-                    Rigidbody2D.AddForce(Vector2.up * UpForce);
-                }
-            }
+            Rigidbody2D.AddForce(Vector2.up * UpForce);
         }
     }
 }
