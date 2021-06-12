@@ -26,16 +26,11 @@ public class Character1 : PlayerCharacter
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _rope.PullRope();
+            GameObjectInstanceManager.GetPlayerRope().PullRope();
         }
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            _rope.ReleaseRope();
+            GameObjectInstanceManager.GetPlayerRope().UnpullRope();
         }
-    }
-    protected override void Awake()
-    {
-        base.Awake();
-        _rope = GetComponent<Rope>();
     }
 }
