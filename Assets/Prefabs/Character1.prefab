@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 2757866978796864088}
   - component: {fileID: 2757866978796864089}
   - component: {fileID: 1620599909476315305}
+  - component: {fileID: 1649616940}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Untagged
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedTo: {fileID: 0}
   MaxLength: 5
-  PullStrength: 3
+  PullStrength: 15
 --- !u!114 &2757866978796864088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +454,22 @@ TrailRenderer:
   m_MinVertexDistance: 0.5
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1649616940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757866978796864102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec963f8a7319ea4fb3d526803e50947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCharacter: {fileID: 2757866978796864097}
+  Rope: {fileID: 2757866978796864094}
+  Rigidbody2D: {fileID: 2757866978796864096}
+  UpForce: 15
 --- !u!1 &4828860582054429623
 GameObject:
   m_ObjectHideFlags: 0
