@@ -11,7 +11,6 @@ public class CharacterWallCollision : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         Vector2 Dir = transform.position - collision.transform.position;
-        Debug.Log(Dir);
         if (Dir.x > 0 || Dir.x < 0)
         {
             if (PlayerCharacter.HasControl() == false)
