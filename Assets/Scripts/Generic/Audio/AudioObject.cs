@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Generic.Event;
 
 namespace Assets.Scripts.Generic.Audio
 {

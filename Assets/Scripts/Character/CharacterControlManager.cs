@@ -2,7 +2,7 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.Scripts.Generic.Event;
 public class CharacterControlManager : MonoBehaviour
 {
     public PlayerCharacter Character1;
@@ -15,6 +15,7 @@ public class CharacterControlManager : MonoBehaviour
         {
             return;
         }
+        EventManager.Emit(GameEvent.CharacterSwitcher);
         if (Character1.HasControl())
         {
             Character1.RemoveControl();

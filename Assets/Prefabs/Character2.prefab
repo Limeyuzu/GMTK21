@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 292298454226335334}
   - component: {fileID: 292298454226335352}
   - component: {fileID: 292298454226335335}
+  - component: {fileID: 2468814648837318057}
   m_Layer: 0
   m_Name: Character2
   m_TagString: Untagged
@@ -175,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5907497832c4274ba4d303e23dd32b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectLiftable: {fileID: 0}
   LiftPosition: {fileID: 292298455220396525}
 --- !u!114 &292298454226335335
 MonoBehaviour:
@@ -189,8 +189,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750596bd760e9dc4c9ded1b06c422c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowDirection: {x: 0.5, y: 1}
+  ThrowDirection: {x: 0.75, y: 1}
   ThrowSpeed: 10
+--- !u!114 &2468814648837318057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292298454226335328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec963f8a7319ea4fb3d526803e50947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCharacter: {fileID: 292298454226335329}
+  Rope: {fileID: 2757866978796864094, guid: aa677dcc4c550a343886489fc14c451c, type: 3}
+  Rigidbody2D: {fileID: 292298454226335330}
 --- !u!1 &292298455220396524
 GameObject:
   m_ObjectHideFlags: 0

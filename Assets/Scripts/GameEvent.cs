@@ -1,11 +1,12 @@
-﻿namespace Assets.Scripts
+﻿namespace Assets.Scripts.Generic.Event
 {
     /// <summary>
     /// The events specific to this game to be used in EventManager.
     /// </summary>
     public enum GameEvent
     {
-        EnumEventOne,
-        EnumEventTwo,
+        PickUpObject,
+        CharacterSwitcher,
+        ThrowCharacter,
     }
 }
