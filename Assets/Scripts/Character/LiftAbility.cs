@@ -32,11 +32,7 @@ public class LiftAbility : MonoBehaviour
             return false;
         }
         Liftable LiftObject = Object.GetComponent<Liftable>();
-        if (LiftObject.CheckLiftableStatus() == false)
-        {
-            return false;
-        }
-        return true;
+        return LiftObject.CheckLiftableStatus();
     }
     public void ClearLiftableObject()
     {
@@ -45,11 +41,7 @@ public class LiftAbility : MonoBehaviour
     }
     public bool CheckForLiftedObject()
     {
-        if(ObjectLiftable == null)
-        {
-            return false;
-        }
-        return true;
+        return ObjectLiftable != null;
     }
     public Liftable GetLiftedObject()
     {

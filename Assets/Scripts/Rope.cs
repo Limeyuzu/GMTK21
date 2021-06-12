@@ -36,6 +36,12 @@ namespace Assets.Scripts
         private void Update()
         {
             DrawRope();
+            if (Input.GetKey(KeyCode.Q))
+            {
+                MaxLength = 1;
+                return;
+            }
+            MaxLength = 5;
         }
 
         private void FixedUpdate()
