@@ -28,14 +28,14 @@ public class PlayerCharacter : Character, IControlSwitchable
         Move(Dir);
     }
 
-    public void GiveControl()
+    public virtual void GiveControl()
     {
         _controlling = true;
         Liftable.ToggleLiftable(false);
         liftAbility.ToggleLiftability(true);
     }
 
-    public void RemoveControl()
+    public virtual void RemoveControl()
     {
         _controlling = false;
         Stop();
