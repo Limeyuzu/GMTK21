@@ -23,7 +23,7 @@ public class LiftAbility : MonoBehaviour
         Transform CollisionTransform = Object.transform;
         CollisionTransform.position = LiftPosition.position;
         CollisionTransform.parent = transform;
-        EventManager.Emit(GameEvent.PickUpObject);
+        EventManager.Emit(GameEvent.PickUpObject, gameObject);
     }
     bool AssessLiftObject(GameObject Object)
     {

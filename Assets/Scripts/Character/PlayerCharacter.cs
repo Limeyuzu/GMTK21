@@ -1,12 +1,11 @@
 using Assets.Scripts;
+using Assets.Scripts.Generic.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Liftable)), RequireComponent(typeof(ThrowAbility))]
 public class PlayerCharacter : Character, IControlSwitchable
 {
-    //Abilities of all characters
-    //Move
     Liftable Liftable;
     ThrowAbility ThrowAbility;
     private bool _controlling = false;
@@ -52,11 +51,13 @@ public class PlayerCharacter : Character, IControlSwitchable
         Liftable.ToggleLiftable(true);
     }
     public bool HasControl() => _controlling;
-    private void Awake()
+
+    protected void Awake()
     {
         Liftable = GetComponent<Liftable>();
         ThrowAbility = GetComponent<ThrowAbility>();
         _rope = GetComponent<Rope>();
+        SubscribeToPlayerActions();
     }
     private void Update()
     {
@@ -64,5 +65,29 @@ public class PlayerCharacter : Character, IControlSwitchable
         {
             CheckInputs();
         }
+
+        // TODO Should include being in the air going up, not just down
+        var isFalling = this.Rigidbody.velocity.y < -0.2f;
+        Animator.SetBool("IsFalling", isFalling);
+
+        Animator.SetBool("IsBeingPickedUp", Liftable.IsBeingLifted);
+    }
+
+    private void SubscribeToPlayerActions()
+    {
+        EventManager.Subscribe(GameEvent.PickUpObject, o => {
+            var gameObject = (GameObject)o;
+            if (gameObject == this.gameObject) 
+            { 
+                Animator.SetBool("IsPickingUp", true); 
+            }
+        });
+        EventManager.Subscribe(GameEvent.ThrowCharacter, o => {
+            var gameObject = (GameObject)o;
+            if (gameObject != this.gameObject) { return; }
+
+            Animator.SetBool("IsPickingUp", false);
+            Animator.SetTrigger("IsThrowing");
+        });
     }
 }
