@@ -7,9 +7,10 @@ public class HingeRope : MonoBehaviour
     private LineRenderer lineRenderer;
     private List<RopeSegment> RopeSegments = new List<RopeSegment>();
     public float RopeSegmentLength = 0.25f;
-    //public float MinSegLength = 0.15f;
-    //public float MaxSegLength = 0.35f;
-    private int SegmentLength = 20;
+
+    private int SegmentLength;
+    public int MaxSegmentLength = 30;
+    public int MinSegmentLength = 5;
     private float LineWidth = 0.1f;
 
     [SerializeField] private Transform StartPoint;
@@ -19,11 +20,13 @@ public class HingeRope : MonoBehaviour
     private Vector3 MousePositionWorld;
     private int IndexMousePos;
     [SerializeField]
-    private GameObject FollowTarget;
+    public GameObject Collider;
+    private List<GameObject> FollowTargets = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        FindDistance();
         this.lineRenderer = this.GetComponent<LineRenderer>();
         Vector3 RopeStartPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -52,20 +55,46 @@ public class HingeRope : MonoBehaviour
         float XStart = StartPoint.position.x;
         float XEnd = EndPoint.position.x;
 
-
-
-        float CurrX = this.FollowTarget.transform.position.x;
-
-        float Ratio = (CurrX - XStart) / (XEnd - XStart);
-        if (Ratio > 0.0f)
+        for (int i = 0; i < SegmentLength; ++i)
         {
-            this.IndexMousePos = (int)(this.SegmentLength * Ratio);
+            float CurrX = this.FollowTargets[i].transform.position.x;
+
+            float Ratio = (CurrX - XStart) / (XEnd - XStart);
+
+            if (Ratio > 0.0f)
+            {
+                this.IndexMousePos = (int)(this.SegmentLength * Ratio);
+            }
         }
+
+        //float CurrX = this.FollowTarget.transform.position.x;
+
+        //float Ratio = (CurrX - XStart) / (XEnd - XStart);
+        //if (Ratio > 0.0f)
+        //{
+            //this.IndexMousePos = (int)(this.SegmentLength * Ratio);
+        //}
     }
 
     void FixedUpdate()
     {
         this.Simulate();
+    }
+
+    void FindDistance()
+    {
+        if (Vector3.Distance(StartPoint.position, EndPoint.position) < (MinSegmentLength * RopeSegmentLength))
+        {
+            SegmentLength = MinSegmentLength;
+        }
+        else if (Vector3.Distance(StartPoint.position, EndPoint.position) < (MaxSegmentLength / RopeSegmentLength))
+        {
+            SegmentLength = Mathf.RoundToInt(Vector3.Distance(StartPoint.position, EndPoint.position) / RopeSegmentLength);
+        }
+        else
+        {
+            SegmentLength = MaxSegmentLength;
+        }
     }
 
     void Simulate()
@@ -137,17 +166,18 @@ public class HingeRope : MonoBehaviour
             {
                 RopeSegment segment = this.RopeSegments[i];
                 RopeSegment segment2 = this.RopeSegments[i + 1];
-                segment.Curr_Pos = new Vector2(this.FollowTarget.transform.position.x, this.FollowTarget.transform.position.y);
-                segment2.Curr_Pos = new Vector2(this.FollowTarget.transform.position.x, this.FollowTarget.transform.position.y);
+                segment.Curr_Pos = new Vector2(this.FollowTargets[i].transform.position.x, this.FollowTargets[i].transform.position.y);
+                segment2.Curr_Pos = new Vector2(this.FollowTargets[i].transform.position.x, this.FollowTargets[i].transform.position.y);
                 this.RopeSegments[i] = segment;
                 this.RopeSegments[i + 1] = segment2;
-
             }
         }
     }
 
     void DrawRope()
     {
+        FindDistance();
+
         float LineWidth = this.LineWidth;
         lineRenderer.startWidth = LineWidth;
         lineRenderer.endWidth = LineWidth;
@@ -156,6 +186,14 @@ public class HingeRope : MonoBehaviour
         for (int i = 0; i < this.SegmentLength; ++i)
         {
             RopePositions[i] = this.RopeSegments[i].Curr_Pos;
+            Vector3 Collider_Pos = new Vector3(this.RopeSegments[i].Curr_Pos.x, this.RopeSegments[i].Curr_Pos.y, 0.0f);
+            GameObject NewCollider = Instantiate(Collider, Collider_Pos, Quaternion.identity);
+            FollowTargets.Add(NewCollider);
+        }
+        for (int i = 0; i < this.SegmentLength; ++i)
+        {
+            Destroy(FollowTargets[i]);
+            FollowTargets.RemoveAt(i);
         }
 
         lineRenderer.positionCount = RopePositions.Length;
