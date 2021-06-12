@@ -29,7 +29,7 @@ public class PlayerCharacter : Character, IControlSwitchable
         Move(Dir);
     }
 
-    public void GiveControl()
+    public virtual void GiveControl()
     {
         _controlling = true;
         if (_rope)
@@ -42,7 +42,7 @@ public class PlayerCharacter : Character, IControlSwitchable
         FindObjectOfType<CameraTarget>().Reassign();
     }
 
-    public void RemoveControl()
+    public virtual void RemoveControl()
     {
         _controlling = false;
         if (_rope)
