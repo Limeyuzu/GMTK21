@@ -50,9 +50,10 @@ GameObject:
   - component: {fileID: 2757866978796864089}
   - component: {fileID: 1620599909476315305}
   - component: {fileID: 1649616940}
+  - component: {fileID: 1647154084288719287}
   m_Layer: 0
   m_Name: Character1
-  m_TagString: Untagged
+  m_TagString: Character1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -470,6 +471,25 @@ MonoBehaviour:
   Rope: {fileID: 2757866978796864094}
   Rigidbody2D: {fileID: 2757866978796864096}
   UpForce: 15
+--- !u!95 &1647154084288719287
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757866978796864102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 743323439366ffd40ab7f47dbf9ab8fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4828860582054429623
 GameObject:
   m_ObjectHideFlags: 0
