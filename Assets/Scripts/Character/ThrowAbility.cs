@@ -7,6 +7,7 @@ public class ThrowAbility : MonoBehaviour
     LiftAbility LiftAbility;
     public Vector2 ThrowDirection;
     public int ThrowSpeed;
+
     private void Start()
     {
         LiftAbility = GetComponent<LiftAbility>();
@@ -17,8 +18,13 @@ public class ThrowAbility : MonoBehaviour
         {
             return;
         }
+
         Liftable ThrowObject = LiftAbility.GetLiftedObject();
         ThrowObject.Unlock();
+
+        // Chaces Trail Render addition
+        ThrowObject.GetComponent<TrailRenderer>().enabled = true;
+
         Rigidbody2D RB = ThrowObject.ObjectRigidBody;
         Vector2 NewDir = new Vector2((ThrowDirection.x * transform.localScale.x), ThrowDirection.y);
         RB.velocity = NewDir * ThrowSpeed;
