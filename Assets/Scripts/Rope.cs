@@ -6,12 +6,15 @@ namespace Assets.Scripts
     {
         [SerializeField] Rigidbody2D ConnectedToRigidBody;
         [SerializeField] float MaxLength = 5;
+        [SerializeField] float PullLength = 1;
         [SerializeField] float PullStrength = 3;
 
         // When false, ConnectedTo will be pulled. When true, this will be pulled.
         private bool _ropeFlipped = true;
         private bool _maxLengthReached;
         private Color _ropeOriginalColor;
+
+        private float CurrentMaxLength;
 
         private Rigidbody2D _thisRigidbody2D;
         private LineRenderer _lineRenderer;
@@ -31,19 +34,30 @@ namespace Assets.Scripts
             _thisRigidbody2D = GetComponent<Rigidbody2D>();
             _lineRenderer = GetComponent<LineRenderer>();
             _ropeOriginalColor = _lineRenderer.startColor;
+            CurrentMaxLength = MaxLength;
         }
 
         private void Update()
         {
             DrawRope();
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                MaxLength = 1;
+                PullRope();
                 return;
             }
-            MaxLength = 5;
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                ReleaseRope();
+            }
         }
-
+        public void PullRope()
+        {
+            CurrentMaxLength = PullLength;
+        }
+        public void ReleaseRope()
+        {
+            CurrentMaxLength = MaxLength;
+        }
         private void FixedUpdate()
         {
             CheckDistance();
@@ -53,7 +67,7 @@ namespace Assets.Scripts
         private void CheckDistance()
         {
             var distance = Vector2.Distance(this.transform.position, ConnectedToRigidBody.transform.position);
-            _maxLengthReached = distance > MaxLength;
+            _maxLengthReached = distance > CurrentMaxLength;
         }
 
         private void ExecuteRopeForces()

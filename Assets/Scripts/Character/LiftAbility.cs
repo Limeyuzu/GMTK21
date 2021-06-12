@@ -7,8 +7,21 @@ public class LiftAbility : MonoBehaviour
 {
     Liftable ObjectLiftable;
     public Transform LiftPosition;
+    private bool AbleToLift = true;
+    public void ToggleLiftability(bool On)
+    {
+        AbleToLift = On;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(AbleToLift == false)
+        {
+            return;
+        }
+        if(collision.transform.parent != null)
+        {
+            return;
+        }
         GameObject CollisionObject = collision.gameObject;
         if(AssessLiftObject(CollisionObject) == false)
         {

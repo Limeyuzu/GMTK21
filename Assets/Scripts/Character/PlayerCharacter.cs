@@ -8,6 +8,7 @@ public class PlayerCharacter : Character, IControlSwitchable
 {
     Liftable Liftable;
     ThrowAbility ThrowAbility;
+    LiftAbility liftAbility;
     private bool _controlling = false;
     private Rope _rope;
     public void CheckInputs()
@@ -26,6 +27,18 @@ public class PlayerCharacter : Character, IControlSwitchable
             ThrowAbility.ThrowObject();
         }
         Move(Dir);
+        if(_rope == null)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _rope.PullRope();
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            _rope.ReleaseRope();
+        }
     }
 
     public void GiveControl()
@@ -36,6 +49,7 @@ public class PlayerCharacter : Character, IControlSwitchable
             _rope.FlipRopeTarget();
         }
         Liftable.ToggleLiftable(false);
+        liftAbility.ToggleLiftability(true);
         FindObjectOfType<CameraTarget>().Parent_Character = this.gameObject;
         FindObjectOfType<CameraTarget>().Reassign();
     }
@@ -49,6 +63,7 @@ public class PlayerCharacter : Character, IControlSwitchable
         }
         Stop();
         Liftable.ToggleLiftable(true);
+        liftAbility.ToggleLiftability(false);
     }
     public bool HasControl() => _controlling;
 
@@ -57,6 +72,7 @@ public class PlayerCharacter : Character, IControlSwitchable
         Liftable = GetComponent<Liftable>();
         ThrowAbility = GetComponent<ThrowAbility>();
         _rope = GetComponent<Rope>();
+        liftAbility = GetComponent<LiftAbility>();
         SubscribeToPlayerActions();
     }
     private void Update()
