@@ -6,6 +6,6 @@
     public enum GameEvent
     {
         EnumEventOne,
-        EnumEventTwo
+        EnumEventTwo,
     }
 }
