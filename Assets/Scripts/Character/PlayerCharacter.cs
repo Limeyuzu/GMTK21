@@ -37,6 +37,8 @@ public class PlayerCharacter : Character, IControlSwitchable
             _rope.FlipRopeTarget();
         }
         Liftable.ToggleLiftable(false);
+        FindObjectOfType<CameraTarget>().Parent_Character = this.gameObject;
+        FindObjectOfType<CameraTarget>().Reassign();
     }
 
     public void RemoveControl()
