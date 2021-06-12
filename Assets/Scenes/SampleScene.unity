@@ -2647,6 +2647,34 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1184214111}
+    - target: {fileID: 8997336595057749627, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133556, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133556, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.082146674
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133556, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.08693843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133556, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.24528301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133557, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997336596388133557, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
+      propertyPath: m_BlendUpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8997336596388439185, guid: a06846dd6abcada4aa3a2238958921da, type: 3}
       propertyPath: m_RootOrder
       value: 0
