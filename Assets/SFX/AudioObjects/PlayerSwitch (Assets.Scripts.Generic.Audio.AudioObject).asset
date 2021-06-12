@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023418172606f05498504553f185f7f1, type: 3}
   m_Name: PlayerSwitch (Assets.Scripts.Generic.Audio.AudioObject)
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: f174759a536392047a21d2db4f44236d, type: 3}
+  Clips:
+  - {fileID: 8300000, guid: f174759a536392047a21d2db4f44236d, type: 3}
   TriggerEventKey: 1
   Priority: 128
   Volume: 1

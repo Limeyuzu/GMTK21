@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023418172606f05498504553f185f7f1, type: 3}
   m_Name: PickUpObject (Assets.Scripts.Generic.Audio.AudioObject)
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 13d98589a5030204dbca7625c6d721c3, type: 3}
+  Clips:
+  - {fileID: 8300000, guid: 13d98589a5030204dbca7625c6d721c3, type: 3}
   TriggerEventKey: 0
   Priority: 128
   Volume: 1

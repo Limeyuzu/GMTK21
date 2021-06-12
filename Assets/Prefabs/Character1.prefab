@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a92bdea836cfc349aca8b40509f2bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectedTo: {fileID: 0}
+  ConnectedToRigidBody: {fileID: 0}
   MaxLength: 5
   PullStrength: 15
 --- !u!114 &2757866978796864088
