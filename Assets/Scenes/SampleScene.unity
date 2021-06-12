@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroClip: {fileID: 844568437}
   LoopClip: {fileID: 844568436}
+  StartLoopDelay: -0.2
 --- !u!114 &844568434
 MonoBehaviour:
   m_ObjectHideFlags: 0
