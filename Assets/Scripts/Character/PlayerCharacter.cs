@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Liftable)), RequireComponent(typeof(ThrowAbility))]
 public class PlayerCharacter : Character, IControlSwitchable
 {
-    Liftable Liftable;
-    ThrowAbility ThrowAbility;
-    LiftAbility liftAbility;
+    protected Liftable Liftable;
+    protected ThrowAbility ThrowAbility;
+    protected LiftAbility liftAbility;
     private bool _controlling = false;
-    private Rope _rope;
-    public void CheckInputs()
+    protected Rope _rope;    
+    public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
@@ -25,20 +25,8 @@ public class PlayerCharacter : Character, IControlSwitchable
         if (Input.GetKeyDown(KeyCode.E))
         {
             ThrowAbility.ThrowObject();
-        }
+        }        
         Move(Dir);
-        if(_rope == null)
-        {
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            _rope.PullRope();
-        }
-        if (Input.GetKeyUp(KeyCode.Q))
-        {
-            _rope.ReleaseRope();
-        }
     }
 
     public void GiveControl()
@@ -67,15 +55,14 @@ public class PlayerCharacter : Character, IControlSwitchable
     }
     public bool HasControl() => _controlling;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         Liftable = GetComponent<Liftable>();
         ThrowAbility = GetComponent<ThrowAbility>();
-        _rope = GetComponent<Rope>();
         liftAbility = GetComponent<LiftAbility>();
         SubscribeToPlayerActions();
     }
-    private void Update()
+    public virtual void Update()
     {
         if(_controlling == true)
         {
@@ -85,7 +72,6 @@ public class PlayerCharacter : Character, IControlSwitchable
         // TODO Should include being in the air going up, not just down
         var isFalling = this.Rigidbody.velocity.y < -0.2f;
         Animator.SetBool("IsFalling", isFalling);
-
         Animator.SetBool("IsBeingPickedUp", Liftable.IsBeingLifted);
     }
 

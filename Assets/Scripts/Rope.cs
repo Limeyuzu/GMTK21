@@ -40,15 +40,7 @@ namespace Assets.Scripts
         private void Update()
         {
             DrawRope();
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                PullRope();
-                return;
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                ReleaseRope();
-            }
+            
         }
         public void PullRope()
         {
