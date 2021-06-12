@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class LiftAbility : MonoBehaviour
 {
-    public Liftable ObjectLiftable;
+    Liftable ObjectLiftable;
     public Transform LiftPosition;
     private void OnCollisionEnter2D(Collision2D collision)
     {

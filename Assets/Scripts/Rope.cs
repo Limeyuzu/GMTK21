@@ -9,7 +9,7 @@ namespace Assets.Scripts
         [SerializeField] float PullStrength = 3;
 
         // When false, ConnectedTo will be pulled. When true, this will be pulled.
-        private bool _ropeFlipped;
+        private bool _ropeFlipped = true;
         private bool _maxLengthReached;
 
         private Rigidbody2D _thisRigidbody2D;
@@ -17,6 +17,8 @@ namespace Assets.Scripts
         private Rigidbody2D _otherRigidBody2D;
         private Color _otherOriginalColor;
         private LineRenderer _lineRenderer;
+
+        Color _ropeOriginalColor;
 
         public void FlipRopeTarget()
         {
@@ -30,22 +32,11 @@ namespace Assets.Scripts
             _otherRigidBody2D = ConnectedTo.GetComponent<Rigidbody2D>();
             _otherOriginalColor = ConnectedTo.GetComponent<SpriteRenderer>().color;
             _lineRenderer = GetComponent<LineRenderer>();
+            _ropeOriginalColor = _lineRenderer.startColor;
         }
 
         private void Update()
         {
-            // debug color switch
-            if (_ropeFlipped)
-            {
-                var sprite = GetComponent<SpriteRenderer>(); 
-                sprite.color = _maxLengthReached ? Color.red : _thisOriginalColor;
-            }
-            else
-            {
-                var sprite = ConnectedTo.GetComponent<SpriteRenderer>();
-                sprite.color = _maxLengthReached ? Color.red : _otherOriginalColor;
-            }
-
             DrawRope();
         }
 
@@ -83,6 +74,15 @@ namespace Assets.Scripts
         {
             _lineRenderer.SetPosition(0, this.transform.position);
             _lineRenderer.SetPosition(1, ConnectedTo.transform.position);
+            if (_maxLengthReached)
+            {
+                _lineRenderer.startColor = Color.red;
+                _lineRenderer.endColor = Color.red;
+                return;
+            }
+            _lineRenderer.startColor = _ropeOriginalColor;
+            _lineRenderer.endColor = _ropeOriginalColor;
+
         }
     }
 }

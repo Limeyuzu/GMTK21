@@ -2,12 +2,13 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerCharacter : StrongCharacter, IControlSwitchable
+[RequireComponent(typeof(Liftable)), RequireComponent(typeof(ThrowAbility))]
+public class PlayerCharacter : Character, IControlSwitchable
 {
     //Abilities of all characters
     //Move
-
+    Liftable Liftable;
+    ThrowAbility ThrowAbility;
     private bool _controlling = false;
     private Rope _rope;
     public void CheckInputs()
@@ -23,7 +24,7 @@ public class PlayerCharacter : StrongCharacter, IControlSwitchable
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ThrowObject();
+            ThrowAbility.ThrowObject();
         }
         Move(Dir);
     }
@@ -35,6 +36,7 @@ public class PlayerCharacter : StrongCharacter, IControlSwitchable
         {
             _rope.FlipRopeTarget();
         }
+        Liftable.ToggleLiftable(false);
     }
 
     public void RemoveControl()
@@ -45,16 +47,15 @@ public class PlayerCharacter : StrongCharacter, IControlSwitchable
             _rope.FlipRopeTarget();
         }
         Stop();
+        Liftable.ToggleLiftable(true);
     }
-
     public bool HasControl() => _controlling;
-
-    protected override void Start()
+    private void Awake()
     {
+        Liftable = GetComponent<Liftable>();
+        ThrowAbility = GetComponent<ThrowAbility>();
         _rope = GetComponent<Rope>();
-        base.Start();
     }
-
     private void Update()
     {
         if(_controlling == true)

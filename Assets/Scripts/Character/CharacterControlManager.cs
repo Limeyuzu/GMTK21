@@ -10,10 +10,11 @@ public class CharacterControlManager : MonoBehaviour
 
     public void SwitchCharacters()
     {
-        //if (Character1.transform.parent != null || Character2.transform.parent != null)
-        //{
-        //    return;
-        //}
+        //Checks if one character is carrying the other.
+        if (Character1.transform.parent != null || Character2.transform.parent != null)
+        {
+            return;
+        }
         if (Character1.HasControl())
         {
             Character1.RemoveControl();
@@ -28,6 +29,7 @@ public class CharacterControlManager : MonoBehaviour
     private void Start()
     {
         Character1.GiveControl();
+        Character2.RemoveControl();
     }
 
     void Update()

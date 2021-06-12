@@ -6,7 +6,7 @@ public class Liftable : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody2D ObjectRigidBody;
-    bool OpenToLift = true;
+    public bool OpenToLift = true;
     private void Start()
     {
         ObjectRigidBody = GetComponent<Rigidbody2D>();

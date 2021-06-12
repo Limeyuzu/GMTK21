@@ -7,7 +7,5 @@
     {
         EnumEventOne,
         EnumEventTwo,
-        ButtonEPressed,
-        ButtonSpacePressed,
     }
 }
