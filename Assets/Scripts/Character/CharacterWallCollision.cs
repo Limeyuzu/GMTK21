@@ -5,15 +5,21 @@ using Assets.Scripts;
 public class CharacterWallCollision : MonoBehaviour
 {
     public PlayerCharacter PlayerCharacter;
-    public Rope Rope;
     public Rigidbody2D Rigidbody2D;
     public int UpForce;
+
+    private IRope _rope;
     private void OnCollisionStay2D(Collision2D collision)
     {
         var distance = Vector3.Distance(transform.position, collision.transform.position);
-        if (distance > 0 && !PlayerCharacter.HasControl() && Rope.MaxLengthReached())
+        if (distance > 0 && !PlayerCharacter.HasControl() && _rope.MaxLengthReached())
         {
             Rigidbody2D.AddForce(Vector2.up * UpForce);
         }
+    }
+
+    private void Start()
+    {
+        _rope = GameObjectInstanceManager.GetPlayerRope();
     }
 }

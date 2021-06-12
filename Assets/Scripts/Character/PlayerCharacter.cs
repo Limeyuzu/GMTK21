@@ -10,7 +10,6 @@ public class PlayerCharacter : Character, IControlSwitchable
     protected ThrowAbility ThrowAbility;
     protected LiftAbility liftAbility;
     private bool _controlling = false;
-    protected Rope _rope;    
     public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
@@ -32,23 +31,13 @@ public class PlayerCharacter : Character, IControlSwitchable
     public virtual void GiveControl()
     {
         _controlling = true;
-        if (_rope)
-        {
-            _rope.FlipRopeTarget();
-        }
         Liftable.ToggleLiftable(false);
         liftAbility.ToggleLiftability(true);
-        FindObjectOfType<CameraTarget>().Parent_Character = this.gameObject;
-        FindObjectOfType<CameraTarget>().Reassign();
     }
 
     public virtual void RemoveControl()
     {
         _controlling = false;
-        if (_rope)
-        {
-            _rope.FlipRopeTarget();
-        }
         Stop();
         Liftable.ToggleLiftable(true);
         liftAbility.ToggleLiftability(false);

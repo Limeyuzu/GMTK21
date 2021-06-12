@@ -1,55 +1,88 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Rope : MonoBehaviour
+    public class Rope : MonoBehaviour, IRope
     {
-        [SerializeField] Rigidbody2D ConnectedToRigidBody;
         [SerializeField] float MaxLength = 5;
         [SerializeField] float PullLength = 1;
         [SerializeField] float PullStrength = 3;
 
-        // When false, ConnectedTo will be pulled. When true, this will be pulled.
-        private bool _ropeFlipped = true;
+        private List<RopeAttachedBody> _ropeConnections = new List<RopeAttachedBody>();
+        private float _currentMaxLength;
         private bool _maxLengthReached;
+
+        private LineRenderer _lineRenderer;
         private Color _ropeOriginalColor;
 
-        private float CurrentMaxLength;
+        public void Anchor(Rigidbody2D body)
+        {
+            var ropeBody = _ropeConnections.Find(v => v.Body == body);
+            if (ropeBody == null)
+            {
+                Debug.LogError("Could not find attached RigidBody2D to rope");
+            }
 
-        private Rigidbody2D _thisRigidbody2D;
-        private LineRenderer _lineRenderer;
+            ropeBody.IsAnchored = true;
+        }
+
+        public void Unanchor(Rigidbody2D body)
+        {
+            var ropeBody = _ropeConnections.Find(v => v.Body == body);
+            if (ropeBody == null)
+            {
+                Debug.LogError("Could not find attached RigidBody2D to rope");
+            }
+
+            ropeBody.IsAnchored = false;
+        }
+
+        public void Attach(Rigidbody2D body)
+        {
+            var ropeBody = _ropeConnections.Find(v => v.Body == body);
+            if (ropeBody == null)
+            {
+                _ropeConnections.Add(new RopeAttachedBody { Body = body, IsAnchored = false });
+            }
+        }
+
+        public void Detach(Rigidbody2D body)
+        {
+            var ropeBody = _ropeConnections.Find(v => v.Body == body);
+            if (ropeBody != null)
+            {
+                _ropeConnections.Remove(ropeBody);
+            }
+        }
+
+        public void PullRope()
+        {
+            _currentMaxLength = PullLength;
+        }
+
+        public void UnpullRope()
+        {
+            _currentMaxLength = MaxLength;
+        }
 
         public bool MaxLengthReached()
         {
             return _maxLengthReached;
         }
 
-        public void FlipRopeTarget()
-        {
-            _ropeFlipped = !_ropeFlipped;
-        }
-
         private void Start()
         {
-            _thisRigidbody2D = GetComponent<Rigidbody2D>();
             _lineRenderer = GetComponent<LineRenderer>();
             _ropeOriginalColor = _lineRenderer.startColor;
-            CurrentMaxLength = MaxLength;
+            _currentMaxLength = MaxLength;
         }
 
         private void Update()
         {
             DrawRope();
-            
         }
-        public void PullRope()
-        {
-            CurrentMaxLength = PullLength;
-        }
-        public void ReleaseRope()
-        {
-            CurrentMaxLength = MaxLength;
-        }
+
         private void FixedUpdate()
         {
             CheckDistance();
@@ -58,40 +91,62 @@ namespace Assets.Scripts
 
         private void CheckDistance()
         {
-            var distance = Vector2.Distance(this.transform.position, ConnectedToRigidBody.transform.position);
-            _maxLengthReached = distance > CurrentMaxLength;
+            float sumDistance = 0;
+            for (int i = 0; i < _ropeConnections.Count - 1; i++)
+            {
+                sumDistance += Vector2.Distance(_ropeConnections[i].Body.position, _ropeConnections[i + 1].Body.position);
+            }
+
+            _maxLengthReached = sumDistance > _currentMaxLength;
         }
 
         private void ExecuteRopeForces()
         {
             if (!_maxLengthReached) return;
 
-            if (_ropeFlipped)
+            for (int i = 0; i < _ropeConnections.Count; i++)
             {
-                // apply forces - only on this object
-                var direction = ConnectedToRigidBody.transform.position - this.transform.position;
-                _thisRigidbody2D.AddForce(direction.normalized * PullStrength);
-            } 
-            else
-            {
-                // apply forces - only on the connected object
-                var direction = this.transform.position - ConnectedToRigidBody.transform.position;
-                ConnectedToRigidBody.AddForce(direction.normalized * PullStrength);
+                if (_ropeConnections[i].IsAnchored)
+                    continue;
+
+                if (i == 0)
+                {
+                    ForceBodyToOtherBody(_ropeConnections[i].Body, _ropeConnections[i + 1].Body);
+                }
+                else if (i == _ropeConnections.Count - 1)
+                {
+                    ForceBodyToOtherBody(_ropeConnections[i].Body, _ropeConnections[i - 1].Body);
+                }
+                else
+                {
+                    ForceBodyToOtherBody(_ropeConnections[i].Body, _ropeConnections[i + 1].Body);
+                    ForceBodyToOtherBody(_ropeConnections[i].Body, _ropeConnections[i - 1].Body);
+                }
             }
+        }
+
+        private void ForceBodyToOtherBody(Rigidbody2D thisBody, Rigidbody2D otherBody)
+        {
+            var direction = otherBody.position - thisBody.position;
+            thisBody.AddForce(direction.normalized * PullStrength);
         }
 
         private void DrawRope()
         {
-            _lineRenderer.SetPosition(0, this.transform.position);
-            _lineRenderer.SetPosition(1, ConnectedToRigidBody.transform.position);
-            if (_maxLengthReached)
+            var color = _maxLengthReached ? Color.red : _ropeOriginalColor;
+            _lineRenderer.startColor = color;
+            _lineRenderer.endColor = color;
+
+            for (int i = 0; i < _ropeConnections.Count; i++)
             {
-                _lineRenderer.startColor = Color.red;
-                _lineRenderer.endColor = Color.red;
-                return;
+                _lineRenderer.SetPosition(i, _ropeConnections[i].Body.position);
             }
-            _lineRenderer.startColor = _ropeOriginalColor;
-            _lineRenderer.endColor = _ropeOriginalColor;
+        }
+
+        private class RopeAttachedBody
+        {
+            public Rigidbody2D Body;
+            public bool IsAnchored;
         }
     }
 }
