@@ -11,11 +11,14 @@ public class PlayerCharacter : Character, IControlSwitchable
     protected Liftable Liftable;
     protected ThrowAbility ThrowAbility;
     protected LiftAbility liftAbility;
+
     private bool _controlling = false;
     private IRope _rope;
     private bool _ropeAttached;
     private bool _isMovingFromInput;
     private float _currentEmitWalkEventCooldown;
+
+    private PlayerFeet _playerFeet;
     public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
@@ -106,6 +109,7 @@ public class PlayerCharacter : Character, IControlSwitchable
         Liftable = GetComponent<Liftable>();
         ThrowAbility = GetComponent<ThrowAbility>();
         liftAbility = GetComponent<LiftAbility>();
+        _playerFeet = GetComponentInChildren<PlayerFeet>();
     }
 
     protected virtual void Start()
@@ -155,7 +159,7 @@ public class PlayerCharacter : Character, IControlSwitchable
             return;
         }
 
-        if (_currentEmitWalkEventCooldown <= 0)
+        if (_currentEmitWalkEventCooldown <= 0 && _playerFeet.IsTouchingGround())
         {
             _currentEmitWalkEventCooldown = WalkSoundCooldown;
             EventManager.Emit(GameEvent.PlayerWalk);
