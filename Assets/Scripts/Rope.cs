@@ -138,7 +138,6 @@ namespace Assets.Scripts
         {
             // nothing to draw for rope with 1 connection
             _lineRenderer.enabled = _ropeConnections.Count > 1;
-
             var color = _maxLengthReached ? Color.red : _ropeOriginalColor;
             _lineRenderer.startColor = color;
             _lineRenderer.endColor = color;

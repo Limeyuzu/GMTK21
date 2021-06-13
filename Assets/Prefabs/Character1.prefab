@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  WalkSoundCooldown: 0.3
   bombAbility: {fileID: -3481619474635157059}
 --- !u!114 &-3481619474635157059
 MonoBehaviour:
