@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     public int MoveSpeed;
 
-    protected Rigidbody2D Rigidbody;
+    public Rigidbody2D Rigidbody;
     protected Animator Animator;
 
     public void Move(Vector2 Direction)
