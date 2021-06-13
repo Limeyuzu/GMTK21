@@ -26,6 +26,7 @@ public class Bomb : MonoBehaviour
     }
     public void Explode()
     {
+        FindObjectOfType<CameraShake>().Shake_Camera(5.0f, 0.25f);
         StopCoroutine(Timer());
         bombAbility.ReloadBomb();
         GameObject ExplosionRef = Instantiate(Explosion);
