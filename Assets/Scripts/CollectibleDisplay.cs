@@ -8,6 +8,7 @@ public class CollectibleDisplay : MonoBehaviour
     public TMP_Text Display;
     void Update()
     {
-        Display.text = CollectibleTracker.collectibles.ToString();
+        string Text = "X " + CollectibleTracker.collectibles.ToString();
+        Display.text = Text;
     }
 }
