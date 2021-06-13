@@ -30,6 +30,14 @@ public class ThrowAbility : MonoBehaviour
         Vector2 NewDir = new Vector2((ThrowDirection.x * transform.localScale.x), ThrowDirection.y);
         RB.velocity = NewDir * ThrowSpeed;
         LiftAbility.ClearLiftableObject();
-        EventManager.Emit(GameEvent.ThrowCharacter, gameObject);
+        if (ThrowObject.gameObject.GetComponent<Bomb>() != null)
+        {
+            EventManager.Emit(GameEvent.ThrowBomb, gameObject);
+        }
+        else
+        {
+            EventManager.Emit(GameEvent.ThrowCharacter, gameObject);
+        }
+
     }
 }
