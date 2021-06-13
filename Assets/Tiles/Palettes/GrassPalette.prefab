@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8944422418276778473}
   - component: {fileID: 2802497325460073318}
   m_Layer: 31
-  m_Name: Foreground
+  m_Name: GrassPalette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
