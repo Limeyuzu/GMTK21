@@ -20,6 +20,8 @@ public class CharacterWallCollision : MonoBehaviour
 
     private void Start()
     {
+        PlayerCharacter = GetComponent<PlayerCharacter>();
+        Rigidbody2D = GetComponent<Rigidbody2D>();
         _rope = GameObjectInstanceManager.GetPlayerRope();
     }
 }

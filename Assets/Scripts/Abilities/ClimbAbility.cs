@@ -7,7 +7,6 @@ public class ClimbAbility : MonoBehaviour
 {
     ClimbableDetection ClimbableDetection;
     Rigidbody2D Rigidbody2D;
-    Rope Rope;
     CharacterControlManager ControlManager;
     bool AttachedToWall;
     bool Detecting = false;
@@ -17,7 +16,6 @@ public class ClimbAbility : MonoBehaviour
         ClimbableDetection = GetComponent<ClimbableDetection>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
         ControlManager = FindObjectOfType<CharacterControlManager>();
-        Rope = FindObjectOfType<Rope>();
     }
     public void ToggleDetecting()
     {
@@ -34,21 +32,23 @@ public class ClimbAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Detecting == false)
-        //{
-        //    return;
-        //}
-        if (ClimbableDetection.CheckWall())
+        if (Detecting == false)
         {
-            AttachToWall();
+            return;
         }
-        else
+        if(AttachedToWall == false)
         {
-            DetachfromWall();
+            if (ClimbableDetection.CheckWall())
+            {
+                AttachToWall();
+            }
         }
-        if(AttachedToWall == true)
+        if(!ClimbableDetection.CheckWall())
         {
-            TakeClimbInputs();
+            if (AttachedToWall)
+            {
+                DetachfromWall();
+            }          
         }
     }
     public bool CheckAttachStatus() => AttachedToWall;
@@ -74,10 +74,12 @@ public class ClimbAbility : MonoBehaviour
     {
         Rigidbody2D.gravityScale = 0;
         AttachedToWall = true;
+        ControlManager.SetAnchorLock(true);
     }
     public void DetachfromWall()
     {
         Rigidbody2D.gravityScale = 1;
         AttachedToWall = false;
+        ControlManager.SetAnchorLock(false);
     }
 }

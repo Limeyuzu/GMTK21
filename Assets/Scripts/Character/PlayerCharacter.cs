@@ -12,7 +12,6 @@ public class PlayerCharacter : Character, IControlSwitchable
     private bool _controlling = false;
     private IRope _rope;
     private bool _ropeAttached;
-
     public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
@@ -35,20 +34,28 @@ public class PlayerCharacter : Character, IControlSwitchable
         Move(Dir);
     }
 
-    public virtual void GiveControl()
+    public virtual void GiveControl(bool Locked)
     {
         _controlling = true;
         Liftable.ToggleLiftable(false);
         liftAbility.ToggleLiftability(true);
+        if (Locked)
+        {
+            return;
+        }
         ToggleRopeAnchor(true);
     }
 
-    public virtual void RemoveControl()
+    public virtual void RemoveControl(bool Locked)
     {
         _controlling = false;
         Stop();
         Liftable.ToggleLiftable(true);
         liftAbility.ToggleLiftability(false);
+        if (Locked)
+        {
+            return;
+        }
         ToggleRopeAnchor(false);
     }
     public bool HasControl() => _controlling;
