@@ -6,11 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Liftable)), RequireComponent(typeof(ThrowAbility))]
 public class PlayerCharacter : Character, IControlSwitchable
 {
-    Liftable Liftable;
-    ThrowAbility ThrowAbility;
+    protected Liftable Liftable;
+    protected ThrowAbility ThrowAbility;
+    protected LiftAbility liftAbility;
     private bool _controlling = false;
-    private Rope _rope;
-    public void CheckInputs()
+    public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
@@ -24,42 +24,34 @@ public class PlayerCharacter : Character, IControlSwitchable
         if (Input.GetKeyDown(KeyCode.E))
         {
             ThrowAbility.ThrowObject();
-        }
+        }        
         Move(Dir);
     }
 
-    public void GiveControl()
+    public virtual void GiveControl()
     {
         _controlling = true;
-        if (_rope)
-        {
-            _rope.FlipRopeTarget();
-        }
         Liftable.ToggleLiftable(false);
-        FindObjectOfType<CameraTarget>().Parent_Character = this.gameObject;
-        FindObjectOfType<CameraTarget>().Reassign();
+        liftAbility.ToggleLiftability(true);
     }
 
-    public void RemoveControl()
+    public virtual void RemoveControl()
     {
         _controlling = false;
-        if (_rope)
-        {
-            _rope.FlipRopeTarget();
-        }
         Stop();
         Liftable.ToggleLiftable(true);
+        liftAbility.ToggleLiftability(false);
     }
     public bool HasControl() => _controlling;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         Liftable = GetComponent<Liftable>();
         ThrowAbility = GetComponent<ThrowAbility>();
-        _rope = GetComponent<Rope>();
+        liftAbility = GetComponent<LiftAbility>();
         SubscribeToPlayerActions();
     }
-    private void Update()
+    public virtual void Update()
     {
         if(_controlling == true)
         {
@@ -69,7 +61,6 @@ public class PlayerCharacter : Character, IControlSwitchable
         // TODO Should include being in the air going up, not just down
         var isFalling = this.Rigidbody.velocity.y < -0.2f;
         Animator.SetBool("IsFalling", isFalling);
-
         Animator.SetBool("IsBeingPickedUp", Liftable.IsBeingLifted);
     }
 

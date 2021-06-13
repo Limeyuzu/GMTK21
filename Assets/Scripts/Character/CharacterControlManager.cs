@@ -5,32 +5,60 @@ using UnityEngine;
 using Assets.Scripts.Generic.Event;
 public class CharacterControlManager : MonoBehaviour
 {
-    public PlayerCharacter Character1;
-    public PlayerCharacter Character2;
+    private PlayerCharacter _character1;
+    private PlayerCharacter _character2;
+    private CameraTarget _cameraTarget;
+    private IRope _playerRope;
 
     public void SwitchCharacters()
     {
         //Checks if one character is carrying the other.
-        if (Character1.transform.parent != null || Character2.transform.parent != null)
+        if (_character1.transform.parent != null || _character2.transform.parent != null)
         {
-            return;
-        }
-        EventManager.Emit(GameEvent.CharacterSwitcher);
-        if (Character1.HasControl())
-        {
-            Character1.RemoveControl();
-            Character2.GiveControl();
             return;
         }
 
-        Character2.RemoveControl();
-        Character1.GiveControl();
+        EventManager.Emit(GameEvent.CharacterSwitcher);
+
+        if (_character1.HasControl())
+        {
+            ControlCharacter2();
+        } 
+        else
+        {
+            ControlCharacter1();
+        }
+
+    }
+
+    private void ControlCharacter1()
+    {
+        _character1.GiveControl();
+        _cameraTarget.Reassign(_character1.transform);
+        _playerRope.Anchor(_character1.GetComponent<Rigidbody2D>());
+
+        _character2.RemoveControl();
+        _playerRope.Unanchor(_character2.GetComponent<Rigidbody2D>());
+    }
+
+    private void ControlCharacter2()
+    {
+        _character2.GiveControl();
+        _cameraTarget.Reassign(_character2.transform);
+        _playerRope.Anchor(_character2.GetComponent<Rigidbody2D>());
+
+        _character1.RemoveControl();
+        _playerRope.Unanchor(_character1.GetComponent<Rigidbody2D>());
     }
 
     private void Start()
     {
-        Character1.GiveControl();
-        Character2.RemoveControl();
+        _character1 = GameObjectInstanceManager.GetPlayer1();
+        _character2 = GameObjectInstanceManager.GetPlayer2();
+        _cameraTarget = FindObjectOfType<CameraTarget>();
+        _playerRope = GameObjectInstanceManager.GetPlayerRope();
+
+        ControlCharacter1();
     }
 
     void Update()

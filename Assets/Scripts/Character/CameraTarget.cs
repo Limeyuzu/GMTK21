@@ -1,26 +1,18 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraTarget : MonoBehaviour
 {
-    public GameObject Parent_Character;
-
-    // Start is called before the first frame update
     void Start()
     {
-        Reassign();
+        Reassign(GameObjectInstanceManager.GetPlayer1().transform);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Reassign(Transform characterTransform)
     {
-        
-    }
-
-    public void Reassign()
-    {
-        transform.position = Parent_Character.transform.position;
-        transform.parent = Parent_Character.transform;
+        transform.position = characterTransform.position;
+        transform.parent = characterTransform;
     }
 }
