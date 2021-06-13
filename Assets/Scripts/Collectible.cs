@@ -22,6 +22,7 @@ public class Collectible : MonoBehaviour
         if (collision.gameObject.layer == 0)
         {
             Instantiate(ParticleBurst, transform.position, Quaternion.identity);
+            CollectibleTracker.IncrementCollectibles();
             Destroy(gameObject);
         }
     }
