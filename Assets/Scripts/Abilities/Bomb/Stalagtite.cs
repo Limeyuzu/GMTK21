@@ -14,7 +14,7 @@ public class Stalagtite : Breakable
     }
     public override void BreakAction()
     {
-        OffCollider.enabled = false;
+        OffCollider.isTrigger = true;
         RB.constraints = RigidbodyConstraints2D.None;
     }
 
@@ -24,6 +24,13 @@ public class Stalagtite : Breakable
         {
             Instantiate(Large_Dust_Burst, transform.position, Quaternion.identity);
             FindObjectOfType<CameraShake>().Shake_Camera(8.0f, 0.5f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerCharacter>() == true)
+        {
+            collision.gameObject.GetComponent<PlayerCharacter>().Kill();
         }
     }
 }
