@@ -159,7 +159,7 @@ public class PlayerCharacter : Character, IControlSwitchable
             return;
         }
 
-        if (_currentEmitWalkEventCooldown <= 0 && _playerFeet.IsTouchingGround())
+        if (_currentEmitWalkEventCooldown <= 0 && HasControl() && _playerFeet.IsTouchingGround())
         {
             _currentEmitWalkEventCooldown = WalkSoundCooldown;
             EventManager.Emit(GameEvent.PlayerWalk);
