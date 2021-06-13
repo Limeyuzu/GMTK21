@@ -6,12 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(Liftable)), RequireComponent(typeof(ThrowAbility))]
 public class PlayerCharacter : Character, IControlSwitchable
 {
+    [SerializeField] float WalkSoundCooldown = 0.5f;
+
     protected Liftable Liftable;
     protected ThrowAbility ThrowAbility;
     protected LiftAbility liftAbility;
     private bool _controlling = false;
     private IRope _rope;
     private bool _ropeAttached;
+    private bool _isMovingFromInput;
+    private float _currentEmitWalkEventCooldown;
 
     public virtual void CheckInputs()
     {
@@ -32,6 +36,9 @@ public class PlayerCharacter : Character, IControlSwitchable
         {
             DetachSelfFromRope();
         }
+
+        _isMovingFromInput = Dir != Vector2.zero;
+
         Move(Dir);
     }
 
@@ -107,6 +114,8 @@ public class PlayerCharacter : Character, IControlSwitchable
             CheckInputs();
         }
 
+        HandleEmitWalkingEvent();
+
         // TODO Should include being in the air going up, not just down
         var isFalling = this.Rigidbody.velocity.y < -0.2f;
         Animator.SetBool("IsFalling", isFalling);
@@ -129,5 +138,22 @@ public class PlayerCharacter : Character, IControlSwitchable
             Animator.SetBool("IsPickingUp", false);
             Animator.SetTrigger("IsThrowing");
         });
+    }
+
+    private void HandleEmitWalkingEvent()
+    {
+        if (!_isMovingFromInput)
+        {
+            _currentEmitWalkEventCooldown = 0;
+            return;
+        }
+
+        if (_currentEmitWalkEventCooldown <= 0)
+        {
+            _currentEmitWalkEventCooldown = WalkSoundCooldown;
+            EventManager.Emit(GameEvent.PlayerWalk);
+        }
+
+        _currentEmitWalkEventCooldown -= Time.deltaTime;
     }
 }

@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  WalkSoundCooldown: 0.3
 --- !u!114 &5860441997815010248
 MonoBehaviour:
   m_ObjectHideFlags: 0
