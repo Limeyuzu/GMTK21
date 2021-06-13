@@ -29,7 +29,7 @@ public class Character2 : PlayerCharacter
     public override void CheckInputs()
     {
         base.CheckInputs();
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.SPECIAL_ABILITY))
         {
             ClimbAbility.DetachfromWall();
             ClimbAbility.ToggleDetecting();

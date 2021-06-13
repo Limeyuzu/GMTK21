@@ -58,7 +58,7 @@ public class CharacterControlManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.SWITCH_CHARACTER))
         {
             SwitchCharacters();
         }
