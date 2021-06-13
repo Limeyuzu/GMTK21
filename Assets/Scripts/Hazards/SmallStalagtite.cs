@@ -17,9 +17,12 @@ public class SmallStalagtite : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Character>())
         {
-            collision.gameObject.GetComponent<Character>().Kill();
+            collision.gameObject.GetComponent<Character>().Kill();           
         }
         EventManager.Emit(GameEvent.StalactiteCrashSmall);
-        Destroy(gameObject);
+        if(GetComponent<Rigidbody2D>().constraints == RigidbodyConstraints2D.None)
+        {
+            Destroy(gameObject);
+        }       
     }
 }

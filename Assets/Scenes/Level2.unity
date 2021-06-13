@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529592194519590796, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: SceneLoadDelay
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9205808993682643565, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: m_RootOrder
@@ -49848,9 +49848,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioObjects:
+  - {fileID: 11400000, guid: 9550b30bd31b9214eac2e82ddf75463f, type: 2}
+  - {fileID: 11400000, guid: 3c4d69b37b29cf24e9e8ea5f3107ebfa, type: 2}
+  - {fileID: 11400000, guid: 325d2e610f1844c43b701e17f0d30b9b, type: 2}
+  - {fileID: 11400000, guid: efaeb848e274ee2458588bec46ca561c, type: 2}
+  - {fileID: 11400000, guid: 59f1e12746e31c441bee39c83322498b, type: 2}
   - {fileID: 11400000, guid: 630e6cedb660e174d919d02e8f49ebab, type: 2}
+  - {fileID: 11400000, guid: 79885f14d45106a48a102690e681da9e, type: 2}
   - {fileID: 11400000, guid: 2a9c77c25456818408a5be7fc960d00b, type: 2}
   - {fileID: 11400000, guid: b38c0aa8500df364aa7224ea70634cc8, type: 2}
+  - {fileID: 11400000, guid: 4abeab65796ac8f44bbd7f8d1b110733, type: 2}
+  - {fileID: 11400000, guid: 9b75066297bd17b4fa21c35f4bb57256, type: 2}
+  - {fileID: 11400000, guid: ad4a1597158c615449daa205d7cc58e9, type: 2}
 --- !u!4 &1214015489
 Transform:
   m_ObjectHideFlags: 0
