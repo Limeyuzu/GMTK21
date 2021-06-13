@@ -15,6 +15,7 @@ public class Portal : MonoBehaviour
     {
         Time.timeScale = 0;
         EventManager.Emit(GameEvent.PortalReached);
+        EventManager.Emit(GameEvent.Portal);
         for (float i = 0; i < SceneLoadDelay; i += Time.unscaledDeltaTime)
         {
             yield return null;
