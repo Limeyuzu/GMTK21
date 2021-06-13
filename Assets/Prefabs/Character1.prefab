@@ -237,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2757866978137348626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.05, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2757866978796864093}
@@ -583,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   Rigidbody: {fileID: 0}
+  DeathFadeOut: {fileID: 0}
   WalkSoundCooldown: 0.3
   bombAbility: {fileID: -3481619474635157059}
 --- !u!114 &-3481619474635157059

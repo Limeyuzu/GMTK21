@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   Rigidbody: {fileID: 292298454226335330}
+  DeathFadeOut: {fileID: 0}
   WalkSoundCooldown: 0.3
   Radial: {fileID: 9188544849638257994}
   StaminaCountdown: {fileID: 9102521286146612001}
@@ -359,8 +360,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   collisionRadius: 0.25
-  RightOffset: {x: 0.5, y: -0.25}
-  LeftOffset: {x: -0.5, y: -0.25}
+  RightOffset: {x: 0.5, y: -0.2}
+  LeftOffset: {x: -0.6, y: -0.2}
 --- !u!114 &-1300902771837925896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292298455220396524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 292298454226335333}
