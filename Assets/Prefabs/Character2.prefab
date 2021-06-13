@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCharacter: {fileID: -727135777919091973}
   Rigidbody2D: {fileID: 292298454226335330}
-  UpForce: 0
+  UpForce: 15
 --- !u!95 &2337075
 Animator:
   serializedVersion: 3
