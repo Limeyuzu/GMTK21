@@ -21,7 +21,7 @@ namespace Assets.Scripts
             var ropeBody = _ropeConnections.Find(v => v.Body == body);
             if (ropeBody == null)
             {
-                Debug.LogError("Could not find attached RigidBody2D to rope");
+                Debug.LogWarning("Could not find attached RigidBody2D to rope");
             }
 
             ropeBody.IsAnchored = true;
@@ -32,7 +32,7 @@ namespace Assets.Scripts
             var ropeBody = _ropeConnections.Find(v => v.Body == body);
             if (ropeBody == null)
             {
-                Debug.LogError("Could not find attached RigidBody2D to rope");
+                Debug.LogWarning("Could not find attached RigidBody2D to rope");
             }
 
             ropeBody.IsAnchored = false;
@@ -102,11 +102,10 @@ namespace Assets.Scripts
 
         private void ExecuteRopeForces()
         {
-            if (_ropeConnections.Count <= 1)
+            if (_ropeConnections.Count <= 1 || !_maxLengthReached)
             {
                 return;
             }
-            if (!_maxLengthReached) return;
 
             for (int i = 0; i < _ropeConnections.Count; i++)
             {
@@ -137,12 +136,9 @@ namespace Assets.Scripts
 
         private void DrawRope()
         {
-            if(_ropeConnections.Count <= 1)
-            {
-                _lineRenderer.enabled = false;
-                return;
-            }
-            _lineRenderer.enabled = true;
+            // nothing to draw for rope with 1 connection
+            _lineRenderer.enabled = _ropeConnections.Count > 1;
+
             var color = _maxLengthReached ? Color.red : _ropeOriginalColor;
             _lineRenderer.startColor = color;
             _lineRenderer.endColor = color;
