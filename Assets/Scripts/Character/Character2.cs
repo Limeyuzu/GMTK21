@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts;
+
 public class Character2 : PlayerCharacter
 {
     ClimbAbility ClimbAbility;
-    CharacterControlManager CharacterControlManager;
     protected override void Awake()
     {
         base.Awake();
         ClimbAbility = GetComponent<ClimbAbility>();
-        CharacterControlManager = FindObjectOfType<CharacterControlManager>();
     }
     public override void CheckInputs()
     {
@@ -38,5 +34,13 @@ public class Character2 : PlayerCharacter
             Rigidbody.isKinematic = true;
         }
         ClimbAbility.StopDetecting();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        AttachSelfToRope();
+        ToggleRopeAnchor(false);
     }
 }
