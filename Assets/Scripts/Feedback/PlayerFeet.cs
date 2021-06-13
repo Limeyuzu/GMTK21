@@ -18,7 +18,10 @@ public class PlayerFeet : MonoBehaviour
     {
         if (Ground_Touching == 0)
         {
-            Instantiate(Landing_Burst, transform.position, Quaternion.identity);
+            if (collision.gameObject.layer == 6)
+            {
+                Instantiate(Landing_Burst, transform.position, transform.rotation);
+            }
 
             if (GetComponentInParent<TrailRenderer>().enabled == true)
             {

@@ -6,6 +6,7 @@ public class Stalagtite : Breakable
 {
     Rigidbody2D RB;
     public PolygonCollider2D OffCollider;
+    public GameObject Large_Dust_Burst;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,14 @@ public class Stalagtite : Breakable
     {
         OffCollider.enabled = false;
         RB.constraints = RigidbodyConstraints2D.None;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            Instantiate(Large_Dust_Burst, transform.position, Quaternion.identity);
+            FindObjectOfType<CameraShake>().Shake_Camera(8.0f, 0.5f);
+        }
     }
 }

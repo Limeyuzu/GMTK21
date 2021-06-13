@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7286832517725356155}
   - component: {fileID: 7286832517725356152}
   - component: {fileID: 7286832517725356148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stalactite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OffCollider: {fileID: 7286832517725356155}
+  Large_Dust_Burst: {fileID: 2388665928617705126, guid: 84312bb03e22aef41987e307b8a9ce5e, type: 3}
 --- !u!61 &7286832517725356148
 BoxCollider2D:
   m_ObjectHideFlags: 0
