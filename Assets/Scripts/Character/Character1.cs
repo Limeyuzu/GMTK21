@@ -8,7 +8,7 @@ public class Character1 : PlayerCharacter
     public override void CheckInputs()
     {
         base.CheckInputs();
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.SPECIAL_ABILITY))
         {
             if (liftAbility.CheckForLiftedObject())
             {
@@ -24,11 +24,11 @@ public class Character1 : PlayerCharacter
     }
     public void CheckPull()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.PULL_ROPE))
         {
             GameObjectInstanceManager.GetPlayerRope().PullRope();
         }
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(PlayerControlKeyCodes.PULL_ROPE))
         {
             GameObjectInstanceManager.GetPlayerRope().UnpullRope();
         }

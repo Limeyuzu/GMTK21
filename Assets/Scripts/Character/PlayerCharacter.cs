@@ -22,19 +22,19 @@ public class PlayerCharacter : Character, IControlSwitchable
     public virtual void CheckInputs()
     {
         Vector2 Dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(PlayerControlKeyCodes.MOVE_LEFT))
         {
             Dir += Vector2.left;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(PlayerControlKeyCodes.MOVE_RIGHT))
         {
             Dir += Vector2.right;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.THROW_OBJECT))
         {
             ThrowAbility.ThrowObject();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(PlayerControlKeyCodes.DETACH_ROPE))
         {
             DetachSelfFromRope();
         }

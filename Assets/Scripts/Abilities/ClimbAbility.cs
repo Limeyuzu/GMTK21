@@ -55,11 +55,11 @@ public class ClimbAbility : MonoBehaviour
     public void TakeClimbInputs()
     {
         Vector2 Dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(PlayerControlKeyCodes.MOVE_UP))
         {
             Dir += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(PlayerControlKeyCodes.MOVE_DOWN))
         {
             Dir += Vector2.down;
         }
