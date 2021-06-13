@@ -1,3 +1,4 @@
+using Assets.Scripts.Generic.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Collectible : MonoBehaviour
         {
             Instantiate(ParticleBurst, transform.position, Quaternion.identity);
             CollectibleTracker.IncrementCollectibles();
+            EventManager.Emit(GameEvent.CollectCoin);
             Destroy(gameObject);
         }
     }

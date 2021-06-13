@@ -1,3 +1,4 @@
+using Assets.Scripts.Generic.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class BombAbility : MonoBehaviour
         CurrentBomb.transform.position = Position;
         CurrentBomb.GetComponent<Bomb>().SetBombAbility(this);
         Loaded = false;
+        EventManager.Emit(GameEvent.PulloutBomb);
     }
     public void ReloadBomb()
     {

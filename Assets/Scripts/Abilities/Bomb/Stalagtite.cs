@@ -1,3 +1,4 @@
+using Assets.Scripts.Generic.Event;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class Stalagtite : Breakable
         {
             Instantiate(Large_Dust_Burst, transform.position, Quaternion.identity);
             FindObjectOfType<CameraShake>().Shake_Camera(8.0f, 0.5f);
+            EventManager.Emit(GameEvent.StalactiteCrashLarge);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
