@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2757866978796864093}
   - component: {fileID: 2757866978796864098}
-  - component: {fileID: 2757866978796864099}
+  - component: {fileID: 7567020890169253256}
   - component: {fileID: 2757866978796864096}
   - component: {fileID: 2757866978796864092}
   - component: {fileID: 2757866978796864088}
@@ -125,8 +125,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2757866978796864099
-BoxCollider2D:
+--- !u!70 &7567020890169253256
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,19 +138,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.020076275, y: -0.013384223}
+  m_Size: {x: 0.59847355, y: 0.86615825}
+  m_Direction: 0
 --- !u!50 &2757866978796864096
 Rigidbody2D:
   serializedVersion: 4
@@ -376,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  Rigidbody: {fileID: 0}
   WalkSoundCooldown: 0.3
   bombAbility: {fileID: -3481619474635157059}
 --- !u!114 &-3481619474635157059
@@ -448,7 +439,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: -0.0033454895, y: -0.44646323}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -459,7 +450,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.2}
+  m_Size: {x: 0.56931305, y: 0.14646363}
   m_EdgeRadius: 0
 --- !u!114 &4069818795619353002
 MonoBehaviour:
