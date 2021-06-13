@@ -2,8 +2,8 @@
 {
     public interface IControlSwitchable
     {
-        void GiveControl();
-        void RemoveControl();
+        void GiveControl(bool Lock);
+        void RemoveControl(bool Lock);
         bool HasControl();
     }
 }

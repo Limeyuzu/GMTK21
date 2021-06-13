@@ -17,7 +17,7 @@ public class Character1 : PlayerCharacter
             bombAbility.SpawnBomb();
         }       
     }
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
         CheckPull();
@@ -32,5 +32,13 @@ public class Character1 : PlayerCharacter
         {
             GameObjectInstanceManager.GetPlayerRope().UnpullRope();
         }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        AttachSelfToRope();
+        ToggleRopeAnchor(true);
     }
 }

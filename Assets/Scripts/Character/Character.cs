@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     public int MoveSpeed;
 
-    protected Rigidbody2D Rigidbody;
+    public Rigidbody2D Rigidbody;
     protected Animator Animator;
 
     public void Move(Vector2 Direction)
@@ -31,8 +31,8 @@ public class Character : MonoBehaviour
     {
         Move(Vector2.zero);
     }
-    // Start is called before the first frame update
-    protected virtual void Start()
+
+    protected virtual void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();

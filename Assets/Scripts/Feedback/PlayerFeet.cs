@@ -5,18 +5,13 @@ using UnityEngine;
 public class PlayerFeet : MonoBehaviour
 {
     private int Ground_Touching = 0;
+    private bool _onGround;
 
     public GameObject Landing_Burst;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsTouchingGround()
     {
-        
+        return _onGround;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -35,10 +30,12 @@ public class PlayerFeet : MonoBehaviour
         }
 
         Ground_Touching += 1;
+        _onGround = true;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         Ground_Touching -= 1;
+        _onGround = false;
     }
 }

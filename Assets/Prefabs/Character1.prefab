@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 1647154084288719287}
   - component: {fileID: 5900101799683361908}
   - component: {fileID: -3481619474635157059}
+  - component: {fileID: 3880335154888897130}
   m_Layer: 0
   m_Name: Character1
   m_TagString: Character1
@@ -557,7 +558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCharacter: {fileID: 5900101799683361908}
-  Rope: {fileID: 2757866978796864094, guid: aa677dcc4c550a343886489fc14c451c, type: 3}
   Rigidbody2D: {fileID: 2757866978796864096}
   UpForce: 15
 --- !u!95 &1647154084288719287
@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  WalkSoundCooldown: 0.3
   bombAbility: {fileID: -3481619474635157059}
 --- !u!114 &-3481619474635157059
 MonoBehaviour:
@@ -606,6 +607,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bomb: {fileID: 6556218425612700577, guid: b61b482ef74338a478bb5153c386efcb, type: 3}
+--- !u!114 &3880335154888897130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757866978796864102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28760f7c4131b05469acc5dfc3f402c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4828860582054429623
 GameObject:
   m_ObjectHideFlags: 0
