@@ -8,6 +8,19 @@
         PickUpObject,
         CharacterSwitcher,
         ThrowCharacter,
-        PlayerWalk
+        PlayerWalk,
+        PulloutBomb,
+        ThrowBomb,
+        CollectCoin,
+        Portal,
+        Explosion,
+        StalactiteFall,
+        StalactiteCrashSmall,
+        StalactiteCrashLarge,
+        TakeDamage,
+        UIClick,
+        UIHoverOn,
+        UIHoverOff,
+        UIRelease
     }
 }
