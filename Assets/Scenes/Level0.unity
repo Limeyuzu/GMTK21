@@ -373,6 +373,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad4a1597158c615449daa205d7cc58e9, type: 2}
   - {fileID: 11400000, guid: 9b75066297bd17b4fa21c35f4bb57256, type: 2}
   - {fileID: 11400000, guid: 59f1e12746e31c441bee39c83322498b, type: 2}
+  - {fileID: 11400000, guid: 4abeab65796ac8f44bbd7f8d1b110733, type: 2}
 --- !u!4 &72672665
 Transform:
   m_ObjectHideFlags: 0
@@ -126186,7 +126187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529592194519590796, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: SceneLoadDelay
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9205808993682643565, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: m_RootOrder
@@ -126198,7 +126199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9205808993682643565, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66
+      value: 66.019
       objectReference: {fileID: 0}
     - target: {fileID: 9205808993682643565, guid: bb398719fd134a9409373cf810a7e8df, type: 3}
       propertyPath: m_LocalPosition.z

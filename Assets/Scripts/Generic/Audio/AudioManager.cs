@@ -34,6 +34,7 @@ namespace Assets.Scripts.Generic.Audio
                 source.panStereo = audioObject.StereoPan;
                 source.spatialBlend = audioObject.SpatialBlend;
                 source.reverbZoneMix = audioObject.ReverbZoneMix;
+                source.playOnAwake = false;
                 sources.Add(source);
             }
 

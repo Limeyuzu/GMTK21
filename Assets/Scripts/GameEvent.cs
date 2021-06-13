@@ -21,6 +21,7 @@
         UIClick,
         UIHoverOn,
         UIHoverOff,
-        UIRelease
+        UIRelease,
+        PortalReached
     }
 }
