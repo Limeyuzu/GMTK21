@@ -7,6 +7,7 @@ public class Character2 : PlayerCharacter
 {
     ClimbAbility ClimbAbility;
     CharacterControlManager CharacterControlManager;
+    CharacterWallCollision CharacterWallCollision;
     public GameObject Radial;
     public Image StaminaCountdown;
     public float GripTime;
@@ -15,6 +16,7 @@ public class Character2 : PlayerCharacter
         base.Awake();
         ClimbAbility = GetComponent<ClimbAbility>();
         CharacterControlManager = FindObjectOfType<CharacterControlManager>();
+        CharacterWallCollision = GetComponent<CharacterWallCollision>();
     }
     protected override void Update()
     {
@@ -37,13 +39,16 @@ public class Character2 : PlayerCharacter
     {
         base.GiveControl(Lock);
         if (ClimbAbility.CheckAttachStatus() == true)
-        {          
+        {
             Rigidbody.isKinematic = false;
-            StopCoroutine(DetachTimer());
-        }        
+            Radial.SetActive(false);
+        }
+        CharacterWallCollision.enabled = true;
+        StopCoroutine(DetachTimer());
     }
     IEnumerator DetachTimer()
     {
+        CharacterWallCollision.enabled = false;
         Radial.SetActive(true);
         for (float i = 0; i < GripTime; i+= Time.deltaTime)
         {
@@ -56,6 +61,7 @@ public class Character2 : PlayerCharacter
         Rigidbody.isKinematic = false;
         ClimbAbility.DetachfromWall();
         CharacterControlManager.ControlCharacter1();
+        CharacterWallCollision.enabled = true;
     }
     public override void RemoveControl(bool Lock)
     {
