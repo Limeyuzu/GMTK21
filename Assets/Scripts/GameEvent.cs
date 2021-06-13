@@ -8,5 +8,6 @@
         PickUpObject,
         CharacterSwitcher,
         ThrowCharacter,
+        PlayerWalk
     }
 }

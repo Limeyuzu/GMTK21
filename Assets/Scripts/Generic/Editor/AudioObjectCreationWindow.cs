@@ -3,6 +3,7 @@ using UnityEditor;
 using Assets.Scripts.Generic.Audio;
 using Assets.Scripts.Generic.Event;
 using System.Collections.Generic;
+using System.Linq;
 
 public class AudioObjectCreationWindow : EditorWindow
 {
@@ -76,9 +77,11 @@ public class AudioObjectCreationWindow : EditorWindow
 
     private List<AudioClip> GetClips()
     {
-        return AudioClipRandomize
+        var list = AudioClipRandomize
             ? new List<AudioClip> { Clip1, Clip2, Clip3, Clip4, Clip5 }
             : new List<AudioClip> { Clip1 };
+
+        return list.Where(clip => clip != null).ToList();
     }
 
     private void CreateAudioObject()

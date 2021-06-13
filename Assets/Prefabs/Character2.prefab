@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   Rigidbody: {fileID: 292298454226335330}
+  WalkSoundCooldown: 0.3
   Radial: {fileID: 9188544849638257994}
   StaminaCountdown: {fileID: 9102521286146612001}
   GripTime: 5
