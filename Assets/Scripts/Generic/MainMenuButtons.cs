@@ -6,7 +6,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     public void Play()
     {
-        SceneHandler.Instance.LoadScene(1);
+        SceneHandler.Instance.LoadScene(SceneHandler.FarthestScene);
     }
     public void Quit()
     {

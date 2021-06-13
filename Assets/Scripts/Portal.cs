@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour
     public float SceneLoadDelay;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        StartCoroutine(LoadScene());
     }
     IEnumerator LoadScene()
     {
