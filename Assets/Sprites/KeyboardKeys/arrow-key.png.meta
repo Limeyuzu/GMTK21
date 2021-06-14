@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: a7d1c4b5e9913804c9c55056ec1b1767
+guid: b8a214b14a596844c9e42e9600d643c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 267870751942263528
-    second: Z-Key_0
+      213: -963983669560797028
+    second: arrow-key_0
   - first:
-      213: -2419205035077790968
-    second: Z-Key_1
+      213: 4100241514200624800
+    second: arrow-key_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Z-Key_0
+      name: arrow-key_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e24c37970ba7b300800000000000000
-      internalID: 267870751942263528
+      spriteID: c981d8eb5fd3f92f0800000000000000
+      internalID: -963983669560797028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Z-Key_1
+      name: arrow-key_1
       rect:
         serializedVersion: 2
         x: 32
@@ -144,8 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8031a5d86d14d6ed0800000000000000
-      internalID: -2419205035077790968
+      spriteID: 0aeec33eeebf6e830800000000000000
+      internalID: 4100241514200624800
       vertices: []
       indices: 
       edges: []
